@@ -1,0 +1,23 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome Back!</h1>
+    <p>Login to continue your chemistry revision</p>
+</div>
+
+<div style="max-width: 500px; margin: 0 auto;">
+    <div class="notes-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="check-btn" style="width: 100%;">Login</button>
+        </form>
+        <p style="margin-top: 1rem; text-align: center;">
+            Don't have an account? <a href="{% url 'register' %}">Register here</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

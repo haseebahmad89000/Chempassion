@@ -1,0 +1,23 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Create Your Account</h1>
+    <p>Join thousands of students mastering IGCSE Chemistry</p>
+</div>
+
+<div style="max-width: 500px; margin: 0 auto;">
+    <div class="notes-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="check-btn" style="width: 100%;">Register</button>
+        </form>
+        <p style="margin-top: 1rem; text-align: center;">
+            Already have an account? <a href="{% url 'login' %}">Login here</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

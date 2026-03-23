@@ -1,0 +1,24 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}All Topics{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>📖 All Topics</h1>
+</div>
+
+<div class="topic-grid">
+    {% for topic in topics %}
+    <a href="{% url 'topic_detail' topic.id %}" class="topic-card">
+        <div class="topic-header">Topic {{ topic.code }}</div>
+        <div class="topic-content">
+            <div class="topic-name">{{ topic.name }}</div>
+            <div class="topic-stats">
+                <span>📚 {{ topic.subtopics.count }} subtopics</span>
+                <span>📝 {{ topic.question_count }} questions</span>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

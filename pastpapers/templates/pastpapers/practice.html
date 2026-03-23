@@ -1,0 +1,54 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Practice: {{ title }}{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>📝 {{ title }}</h1>
+</div>
+
+<div style="margin-bottom: 1rem;">
+    <a href="{% url 'topic_detail' topic_id %}" class="btn">← Back to Topic</a>
+</div>
+
+<div id="questions-container">
+    {% for question in questions %}
+    <div class="question-card" id="question-{{ question.id }}">
+        <div class="question-header">
+            <span class="question-number">Question {{ question.question_number }}</span>
+            <span class="question-marks">{{ question.marks }} marks</span>
+        </div>
+        <div class="question-text">
+            {{ question.question_text|linebreaks }}
+        </div>
+        <div class="answer-area">
+            <textarea id="answer-{{ question.id }}" rows="3" placeholder="Type your answer here..."></textarea>
+            <button class="check-btn" onclick="checkAnswer({{ question.id }})">Check Answer</button>
+            <div id="solution-{{ question.id }}" class="solution">
+                <strong>✓ Correct Answer:</strong>
+                <div class="correct-answer">{{ question.solution.correct_answer|linebreaks }}</div>
+                <strong>📖 Explanation:</strong>
+                <div>{{ question.solution.explanation|linebreaks }}</div>
+                {% if question.solution.examiner_tip %}
+                <strong>💡 Examiner Tip:</strong>
+                <div>{{ question.solution.examiner_tip }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function checkAnswer(questionId) {
+    const solutionDiv = document.getElementById(`solution-${questionId}`);
+    if (solutionDiv.classList.contains('show')) {
+        solutionDiv.classList.remove('show');
+    } else {
+        solutionDiv.classList.add('show');
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Strengths & Weaknesses{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>📊 Strengths & Weaknesses</h1>
+</div>
+
+{% if weak_topics %}
+<div class="card-grid">
+    {% for item in weak_topics %}
+    <div class="feature-card">
+        <div class="feature-icon">📉</div>
+        <h3>{{ item.topic.name }}</h3>
+        <p>Accuracy: {{ item.accuracy|floatformat:1 }}%</p>
+        <p style="font-size: 0.8rem;">{{ item.correct }}/{{ item.attempted }} correct</p>
+        <a href="{% url 'topic_practice' item.topic.id %}" class="btn" style="margin-top: 1rem;">Practice →</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>Start practicing to see your strengths and weaknesses!</p>
+<a href="{% url 'topics' %}" class="btn">Start Practicing →</a>
+{% endif %}
+{% endblock %}

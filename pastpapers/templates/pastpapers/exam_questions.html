@@ -1,0 +1,19 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Exam Questions{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>📝 Exam Questions</h1>
+</div>
+<div class="card-grid">
+    {% for topic in topics %}
+    <a href="{% url 'topic_practice' topic.id %}" class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>{{ topic.name }}</h3>
+        <p>{{ topic.question_count }} questions</p>
+        <span class="feature-badge">Practice →</span>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

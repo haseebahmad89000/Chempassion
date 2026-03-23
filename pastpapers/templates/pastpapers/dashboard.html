@@ -1,0 +1,66 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome, {{ user.username }}! 👋</h1>
+    <p>Track your progress and keep improving</p>
+</div>
+
+<div class="topic-grid">
+    <div class="topic-card">
+        <div class="topic-header">📊 Your Stats</div>
+        <div class="topic-content">
+            <div style="font-size: 2rem; font-weight: bold;">{{ total_attempted }}</div>
+            <div>Questions attempted</div>
+            <div style="font-size: 1.5rem; margin-top: 1rem;">{{ accuracy }}%</div>
+            <div>Accuracy</div>
+            <div style="margin-top: 1rem;">✅ {{ correct_count }} correct</div>
+            <div>❌ {{ total_attempted|add:"-"|add:correct_count }} incorrect</div>
+        </div>
+    </div>
+    
+    <div class="topic-card">
+        <div class="topic-header">🎯 Weak Topics</div>
+        <div class="topic-content">
+            {% if weak_topics %}
+                {% for item in weak_topics %}
+                <div style="margin-bottom: 1rem;">
+                    <strong>{{ item.topic.name }}</strong>
+                    <div style="background: #f5f5f5; border-radius: 10px; margin-top: 0.25rem;">
+                        <div style="background: #ff9800; width: {{ item.accuracy }}%; border-radius: 10px; padding: 0.25rem; color: white; text-align: center; font-size: 0.8rem;">
+                            {{ item.accuracy }}%
+                        </div>
+                    </div>
+                    <div style="font-size: 0.8rem; color: #666;">{{ item.attempted }} attempted</div>
+                    <a href="{% url 'topic_practice' item.topic.id %}" class="btn" style="margin-top: 0.5rem;">Practice →</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Great job! Keep practicing to identify weak areas.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="section-header">
+    <h2>📝 Recent Activity</h2>
+</div>
+
+<div class="notes-container">
+    {% for progress in recent_activity %}
+    <div style="padding: 0.75rem; border-bottom: 1px solid #eee;">
+        <strong>Q{{ progress.question.question_number }}</strong>
+        <span style="color: {% if progress.is_correct %}#2e7d32{% else %}#d32f2f{% endif %};">
+            {% if progress.is_correct %}✅ Correct{% else %}❌ Incorrect{% endif %}
+        </span>
+        <span style="font-size: 0.8rem; color: #666;">{{ progress.attempted_at|date:"M d, H:i" }}</span>
+        <div style="font-size: 0.9rem;">{{ progress.question.question_text|truncatechars:80 }}</div>
+    </div>
+    {% empty %}
+    <p>Start practicing to see your activity here!</p>
+    <a href="{% url 'topics' %}" class="btn">Start Practicing →</a>
+    {% endfor %}
+</div>
+{% endblock %}

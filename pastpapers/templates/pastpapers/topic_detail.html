@@ -1,0 +1,81 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}{{ topic.name }}{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>Topic {{ topic.code }}: {{ topic.name }}</h1>
+</div>
+
+<!-- Notes Section -->
+<div class="section-header">
+    <h2>📝 Study Notes</h2>
+</div>
+<div class="notes-container">
+    {% if topic.notes %}
+        <div class="notes-content">
+            {{ topic.notes.content|linebreaks }}
+        </div>
+    {% else %}
+        <p>Study notes coming soon!</p>
+    {% endif %}
+</div>
+
+<!-- Videos Section -->
+<div class="section-header">
+    <h2>🎥 Video Lessons</h2>
+</div>
+<div class="video-grid">
+    {% for video in videos %}
+    <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/{{ video.youtube_url|slice:'-11:' }}" allowfullscreen></iframe>
+        <div class="video-info">
+            <div class="video-title">{{ video.title }}</div>
+            <div style="font-size: 0.85rem; color: #666;">Duration: {{ video.duration|default:"N/A" }}</div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No videos added yet.</p>
+    {% endfor %}
+</div>
+
+<!-- Practice Questions Section -->
+<div class="section-header">
+    <h2>📝 Practice Questions</h2>
+    <a href="{% url 'topic_practice' topic.id %}" class="btn">Practice All Questions →</a>
+</div>
+
+<div class="topic-grid">
+    {% for subtopic in subtopics %}
+    <div class="topic-card">
+        <div class="topic-header">{{ subtopic.name }}</div>
+        <div class="topic-content">
+            <div class="topic-stats">
+                <span>📝 {{ subtopic.question_count }} questions</span>
+                <span>🎥 {{ subtopic.videos.count }} videos</span>
+            </div>
+            <a href="{% url 'subtopic_practice' subtopic.id %}" class="btn" style="margin-top: 0.5rem;">Practice →</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Live Classes -->
+<div class="section-header">
+    <h2>🎯 Live Classes</h2>
+</div>
+<div class="topic-grid">
+    {% for class in live_classes %}
+    <div class="topic-card">
+        <div class="topic-header">📅 {{ class.date|date:"M d, Y" }} at {{ class.date|date:"H:i" }}</div>
+        <div class="topic-content">
+            <div class="topic-name">{{ class.title }}</div>
+            <div style="margin: 0.5rem 0;">{{ class.description|truncatechars:100 }}</div>
+            <a href="{{ class.zoom_link }}" class="btn" target="_blank">Join Class →</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No upcoming classes for this topic.</p>
+    {% endfor %}
+</div>
+{% endblock %}

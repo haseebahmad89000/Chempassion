@@ -1,0 +1,50 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Live Classes{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>🎥 Live Classes</h1>
+    <a href="#" class="section-link">View schedule →</a>
+</div>
+
+<p style="margin-bottom: 2rem;">Join our live revision sessions with expert teachers. All classes are recorded and available for replay.</p>
+
+<div class="card-grid">
+    {% for class in live_classes %}
+    <div class="feature-card">
+        <div class="feature-icon">🎬</div>
+        <div class="live-date">{{ class.date|date:"l, F d, Y" }} at {{ class.date|date:"h:i A" }}</div>
+        <h3>{{ class.title }}</h3>
+        <p>{{ class.description|truncatechars:100 }}</p>
+        <div style="margin-top: 0.5rem;">
+            <span style="font-size: 0.75rem; background: #e8f5e9; padding: 0.2rem 0.5rem; border-radius: 4px;">{{ class.topic.name }}</span>
+        </div>
+        <a href="{{ class.zoom_link }}" target="_blank" class="btn" style="margin-top: 1rem; display: inline-block;">Join Class →</a>
+        {% if class.recording_url %}
+        <a href="{{ class.recording_url }}" target="_blank" class="btn-outline" style="margin-top: 1rem; margin-left: 0.5rem;">Watch Recording</a>
+        {% endif %}
+    </div>
+    {% empty %}
+    <p>No live classes scheduled yet. Check back soon!</p>
+    {% endfor %}
+</div>
+
+<!-- Upcoming Classes -->
+<div class="section-header" style="margin-top: 2rem;">
+    <h2>📅 Upcoming Schedule</h2>
+</div>
+
+<div>
+    {% for class in upcoming %}
+    <div class="live-class-card">
+        <div class="live-date">{{ class.date|date:"l, F d, Y" }} • {{ class.date|date:"h:i A" }}</div>
+        <div class="live-title">{{ class.title }}</div>
+        <div>{{ class.description }}</div>
+        <a href="{{ class.zoom_link }}" class="live-link" target="_blank">Join live session →</a>
+    </div>
+    {% empty %}
+    <p>No upcoming classes scheduled.</p>
+    {% endfor %}
+</div>
+{% endblock %}

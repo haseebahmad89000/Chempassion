@@ -1,0 +1,20 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Revision Notes{% endblock %}
+
+{% block content %}
+<div class="section-header">
+    <h1>📖 Revision Notes</h1>
+</div>
+
+<div class="card-grid">
+    {% for topic in topics %}
+    <a href="{% url 'topic_detail' topic.id %}" class="feature-card">
+        <div class="feature-icon">📘</div>
+        <h3>Topic {{ topic.code }}: {{ topic.name }}</h3>
+        <p>{{ topic.subtopics.count }} subtopics</p>
+        <span class="feature-badge">View notes →</span>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

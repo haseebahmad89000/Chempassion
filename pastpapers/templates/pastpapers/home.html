@@ -1,0 +1,108 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}Course Resources{% endblock %}
+
+{% block content %}
+<!-- Course Header -->
+<div style="margin-bottom: 2rem;">
+    <h1 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Cambridge (CIE) IGCSE Chemistry Revision</h1>
+    <p style="color: #6c757d;">Specification 0620 & 0971</p>
+    <a href="#" class="btn btn-outline" style="margin-top: 0.5rem;">Download →</a>
+</div>
+
+<!-- Course Resources Section -->
+<div class="section-header">
+    <h2>Course Resources</h2>
+</div>
+
+<div class="card-grid">
+    <a href="{% url 'revision_notes' %}" class="feature-card">
+        <div class="feature-icon">📖</div>
+        <h3>Revision Notes</h3>
+        <p>Concise, high-quality notes covering all topics in the specification</p>
+        <span class="feature-badge">All topics →</span>
+    </a>
+    <a href="{% url 'flashcards' %}" class="feature-card">
+        <div class="feature-icon">🃏</div>
+        <h3>Flashcards</h3>
+        <p>Interactive digital flashcards to reinforce facts and definitions</p>
+        <span class="feature-badge">All topics →</span>
+    </a>
+    <a href="{% url 'exam_questions' %}" class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Exam Questions</h3>
+        <p>Past paper, exam-style and quiz questions with solutions</p>
+        <span class="feature-badge">Continue practising →</span>
+    </a>
+    <a href="{% url 'target_test' %}" class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Target Test</h3>
+        <p>Custom exam practice to target your weak spots</p>
+        <span class="feature-badge">Go to Target Test →</span>
+    </a>
+    <a href="{% url 'past_papers' %}" class="feature-card">
+        <div class="feature-icon">📄</div>
+        <h3>Past Papers</h3>
+        <p>All past papers from this course in one place</p>
+        <span class="feature-badge">See all Past Papers →</span>
+    </a>
+    <a href="{% url 'mock_exams' %}" class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Mock Exams</h3>
+        <p>Expert-created full practice papers</p>
+        <span class="feature-badge">See all Mock Exams →</span>
+    </a>
+</div>
+
+<!-- Revision Framework -->
+<div class="framework">
+    <h3>Our revision framework</h3>
+    <div class="framework-steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h4>Study</h4>
+            <p>Start with comprehensive revision material covering all specification content.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h4>Practice</h4>
+            <p>Practice with exam questions, mocks and past papers to build your confidence.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h4>Diagnose</h4>
+            <p>Our exam and test materials will diagnose your weaknesses and guide you to improve.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Topics Section -->
+<div class="section-header" style="margin-top: 2rem;">
+    <h2>Explore by topic</h2>
+</div>
+
+<div>
+    {% for topic in topics %}
+    <a href="{% url 'topic_detail' topic.id %}" class="topic-card">
+        <div>
+            <div class="topic-name">{{ topic.name }}</div>
+            <div class="topic-code">Topic {{ topic.code }}</div>
+        </div>
+        <div class="topic-stats">{{ topic.question_count }} questions</div>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- Included Features -->
+<div class="framework" style="margin-top: 2rem;">
+    <h3>Included in this course</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem;">
+        <div>✅ Exam specification aligned</div>
+        <div>👩‍🏫 Written by teachers and examiners</div>
+        <div>📓 PDF downloads</div>
+        <div>💪 Test by topic and difficulty</div>
+        <div>🎓 Examiner tips and tricks</div>
+        <div>📝 Step-by-step mark schemes</div>
+    </div>
+</div>
+{% endblock %}
