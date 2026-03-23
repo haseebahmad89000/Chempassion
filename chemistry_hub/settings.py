@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-&2(p+@@vbgx4)x1sw^i2-8nz01r@y2(eah-&g(t+i=z3s=%7ju
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['chempassion.onrender.com', 'chempassion.info', 'www.chempassion.info', 'localhost', '127.0.0.1']
 
 
 # Application definition
