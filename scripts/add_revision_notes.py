@@ -16,13 +16,13 @@ content_topic_1 = """
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <table>
-                <tr><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
-                <tr><td>Shape</td><td>Fixed shape</td><td>Takes shape of container</td><td>Takes shape of container</td></tr>
-                <tr><td>Volume</td><td>Fixed volume</td><td>Fixed volume</td><td>Fills container</td></tr>
-                <tr><td>Compressibility</td><td>Very difficult</td><td>Difficult</td><td>Easy to compress</td></tr>
-                <tr><td>Flow</td><td>Cannot flow</td><td>Can flow</td><td>Can flow</td></tr>
-                <tr><td>Density</td><td>High</td><td>High</td><td>Low</td></tr>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background:#2e7d32; color:white;"><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
+                <tr><td><strong>Shape</strong></td><td>Fixed shape</td><td>Takes shape of container</td><td>Takes shape of container</td></tr>
+                <tr style="background:#f9f9f9;"><td><strong>Volume</strong></td><td>Fixed volume</td><td>Fixed volume</td><td>Fills container</td></tr>
+                <tr><td><strong>Compressibility</strong></td><td>Very difficult</td><td>Difficult</td><td>Easy to compress</td></tr>
+                <tr style="background:#f9f9f9;"><td><strong>Flow</strong></td><td>Cannot flow</td><td>Can flow</td><td>Can flow</td></tr>
+                <tr><td><strong>Density</strong></td><td>High</td><td>High</td><td>Low</td></tr>
             </table>
         </div>
     </div>
@@ -35,13 +35,13 @@ content_topic_1 = """
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <table>
-                <tr><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
-                <tr><td>Particle separation</td><td>Very close (touching)</td><td>Close (touching)</td><td>Far apart</td></tr>
-                <tr><td>Arrangement</td><td>Regular pattern</td><td>Random</td><td>Random</td></tr>
-                <tr><td>Motion</td><td>Vibrate in fixed positions</td><td>Move around each other</td><td>Move quickly in all directions</td></tr>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background:#2e7d32; color:white;"><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
+                <tr><td><strong>Particle separation</strong></td><td>Very close (touching)</td><td>Close (touching)</td><td>Far apart</td></tr>
+                <tr style="background:#f9f9f9;"><td><strong>Arrangement</strong></td><td>Regular pattern</td><td>Random</td><td>Random</td></tr>
+                <tr><td><strong>Motion</strong></td><td>Vibrate in fixed positions</td><td>Move around each other</td><td>Move quickly in all directions</td></tr>
             </table>
-            <pre>
+            <pre style="background:#2d2d2d; color:#f8f8f2; padding:1rem; border-radius:8px; margin-top:1rem;">
 SOLID:              LIQUID:              GAS:
 ● ● ● ●             ●  ●                ●        ●
 ● ● ● ●               ●    ●                      ●
@@ -58,15 +58,15 @@ SOLID:              LIQUID:              GAS:
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <table>
-                <tr><th>Change</th><th>From → To</th><th>Energy</th></tr>
-                <tr><td>Melting</td><td>Solid → Liquid</td><td>Heat absorbed</td></tr>
-                <tr><td>Freezing</td><td>Liquid → Solid</td><td>Heat released</td></tr>
-                <tr><td>Boiling</td><td>Liquid → Gas</td><td>Heat absorbed</td></tr>
-                <tr><td>Evaporation</td><td>Liquid → Gas</td><td>Heat absorbed</td></tr>
-                <tr><td>Condensation</td><td>Gas → Liquid</td><td>Heat released</td></tr>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background:#2e7d32; color:white;"><th>Change</th><th>From → To</th><th>Energy</th></tr>
+                <tr><td><strong>Melting</strong></td><td>Solid → Liquid</td><td>Heat absorbed</td></tr>
+                <tr style="background:#f9f9f9;"><td><strong>Freezing</strong></td><td>Liquid → Solid</td><td>Heat released</td></tr>
+                <tr><td><strong>Boiling</strong></td><td>Liquid → Gas</td><td>Heat absorbed</td></tr>
+                <tr style="background:#f9f9f9;"><td><strong>Evaporation</strong></td><td>Liquid → Gas</td><td>Heat absorbed</td></tr>
+                <tr><td><strong>Condensation</strong></td><td>Gas → Liquid</td><td>Heat released</td></tr>
             </table>
-            <pre>
+            <pre style="background:#2d2d2d; color:#f8f8f2; padding:1rem; border-radius:8px; margin-top:1rem;">
      Melting ↑      Boiling/Evaporation ↑
 SOLID ──────────► LIQUID ──────────────► GAS
       ←──────────          ←─────────────
@@ -82,12 +82,12 @@ SOLID ──────────► LIQUID ───────────
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <table>
-                <tr><th>Condition</th><th>Effect</th><th>Explanation</th></tr>
-                <tr><td>Temperature ↑</td><td>Volume ↑</td><td>Particles gain kinetic energy, move more, push walls outward</td></tr>
-                <tr><td>Temperature ↓</td><td>Volume ↓</td><td>Particles lose energy, move less, walls move inward</td></tr>
-                <tr><td>Pressure ↑</td><td>Volume ↓</td><td>Particles forced closer together</td></tr>
-                <tr><td>Pressure ↓</td><td>Volume ↑</td><td>Particles allowed to spread apart</td></tr>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background:#2e7d32; color:white;"><th>Condition</th><th>Effect</th><th>Explanation</th></tr>
+                <tr><td><strong>Temperature ↑</strong></td><td>Volume ↑</td><td>Particles gain kinetic energy, move more, push walls outward</td></tr>
+                <tr style="background:#f9f9f9;"><td><strong>Temperature ↓</strong></td><td>Volume ↓</td><td>Particles lose energy, move less, walls move inward</td></tr>
+                <tr><td><strong>Pressure ↑</strong></td><td>Volume ↓</td><td>Particles forced closer together</td></tr>
+                <tr style="background:#f9f9f9;"><td><strong>Pressure ↓</strong></td><td>Volume ↑</td><td>Particles allowed to spread apart</td></tr>
             </table>
         </div>
     </div>
@@ -107,7 +107,7 @@ SOLID ──────────► LIQUID ───────────
                 <li><strong>Freezing:</strong> Particles lose energy → move slower → forces pull them into fixed positions</li>
                 <li><strong>Condensing:</strong> Particles lose energy → move slower → forces pull them together</li>
             </ul>
-            <pre>
+            <pre style="background:#2d2d2d; color:#f8f8f2; padding:1rem; border-radius:8px;">
 HEATING CURVE:
 Temperature
     ↑
@@ -118,7 +118,7 @@ Temperature
     │        Solid + Liquid
     │      ───────────────────→ Time
     │      Solid</pre>
-            <div class="key-point">
+            <div style="background:#e8f5e9; border-left:4px solid #2e7d32; padding:0.8rem 1rem; margin:1rem 0; border-radius:8px;">
                 🔑 <strong>Key Point:</strong> During a change of state, temperature remains constant. Energy goes into breaking/forming bonds between particles.
             </div>
         </div>
@@ -159,12 +159,12 @@ Temperature
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <table>
-                <tr><th>Gas</th><th>Mr</th><th>Relative Rate</th></tr>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background:#ff9800; color:white;"><th>Gas</th><th>Mr</th><th>Relative Rate</th></tr>
                 <tr><td>Hydrogen (H₂)</td><td>2</td><td>Very fast</td></tr>
-                <tr><td>Helium (He)</td><td>4</td><td>Fast</td></tr>
+                <tr style="background:#f9f9f9;"><td>Helium (He)</td><td>4</td><td>Fast</td></tr>
                 <tr><td>Oxygen (O₂)</td><td>32</td><td>Slow</td></tr>
-                <tr><td>Carbon dioxide (CO₂)</td><td>44</td><td>Very slow</td></tr>
+                <tr style="background:#f9f9f9;"><td>Carbon dioxide (CO₂)</td><td>44</td><td>Very slow</td></tr>
             </table>
             <p><strong>Formula:</strong> Rate ∝ 1/√Mr</p>
             <p><strong>Explanation:</strong> At the same temperature, all gas particles have the same average kinetic energy (KE = ½mv²). Lighter particles must move faster, so they diffuse faster.</p>
@@ -172,12 +172,12 @@ Temperature
     </div>
 </div>
 
-<div class="key-point">
+<div style="background:#e8f5e9; border-left:4px solid #2e7d32; padding:1rem; margin-top:1.5rem; border-radius:8px;">
     🧪 <strong>Summary:</strong> Solids have fixed shape and volume with regular particle arrangement. Liquids take shape of container with random particle arrangement. Gases fill any container with particles far apart and moving randomly.
 </div>
 """
 
-# Save to database
+# Update the topic note
 topic = Topic.objects.get(code='1')
 note, created = TopicNote.objects.update_or_create(
     topic=topic,
