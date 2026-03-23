@@ -6,8 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
 
-from .models import Topic, Subtopic, Question, Video, LiveClass, StudentProgress
+from .models import Topic, Subtopic, Question, Video, LiveClass, StudentProgress, TopicNote
 
 def home(request):
     topics = Topic.objects.annotate(
@@ -58,8 +59,21 @@ def subtopic_practice(request, subtopic_id):
     return render(request, 'pastpapers/practice.html', context)
 
 def revision_notes(request):
+    """Display revision notes page"""
     topics = Topic.objects.all().order_by('order')
-    return render(request, 'pastpapers/revision_notes.html', {'topics': topics})
+    notes_dict = {}
+    for topic in topics:
+        try:
+            note = TopicNote.objects.get(topic=topic)
+            notes_dict[topic.id] = note.content
+        except TopicNote.DoesNotExist:
+            notes_dict[topic.id] = f"<h2>📖 Notes for {topic.name}</h2><p>Coming soon! Check back later for detailed revision notes.</p>"
+    
+    context = {
+        'topics': topics,
+        'notes': notes_dict,
+    }
+    return render(request, 'pastpapers/revision_notes.html', context)
 
 def flashcards(request):
     topics = Topic.objects.all().order_by('order')
@@ -181,5 +195,3 @@ def save_progress(request):
         
         return JsonResponse({'status': 'saved'})
     return JsonResponse({'error': 'Invalid request'}, status=400)
-
-from datetime import datetime

@@ -1,20 +1,83 @@
 {% extends 'pastpapers/base.html' %}
-
+{% load custom_filters %}
 {% block title %}Revision Notes{% endblock %}
 
 {% block content %}
+
 <div class="section-header">
     <h1>📖 Revision Notes</h1>
+    <p style="color: #6c757d;">Complete syllabus notes for IGCSE Chemistry 0620</p>
 </div>
 
-<div class="card-grid">
+<!-- Topic Navigation -->
+<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
     {% for topic in topics %}
-    <a href="{% url 'topic_detail' topic.id %}" class="feature-card">
-        <div class="feature-icon">📘</div>
-        <h3>Topic {{ topic.code }}: {{ topic.name }}</h3>
-        <p>{{ topic.subtopics.count }} subtopics</p>
-        <span class="feature-badge">View notes →</span>
-    </a>
+    <button onclick="showTopic({{ topic.id }})" class="topic-btn" data-topic="{{ topic.id }}" style="background: white; border: 1px solid #ddd; padding: 0.5rem 1rem; border-radius: 25px; cursor: pointer; font-size: 0.9rem;">
+        {{ topic.code }}. {{ topic.name }}
+    </button>
     {% endfor %}
 </div>
+
+<!-- Notes Content Area -->
+<div id="notes-content" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+    {% for topic in topics %}
+    <div id="topic-{{ topic.id }}" class="topic-notes" style="display: {% if forloop.first %}block{% else %}none{% endif %};">
+        {% with note=notes|get_item:topic.id %}
+            {{ note|safe }}
+        {% endwith %}
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .topic-btn.active {
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        color: white;
+        border-color: transparent;
+    }
+    .topic-btn:hover {
+        border-color: #2e7d32;
+    }
+    .notes-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    .notes-container th, .notes-container td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    .notes-container th {
+        background-color: #2e7d32;
+        color: white;
+    }
+    .notes-container pre {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: monospace;
+    }
+</style>
+
+<script>
+    function showTopic(topicId) {
+        // Hide all topic notes
+        document.querySelectorAll('.topic-notes').forEach(el => {
+            el.style.display = 'none';
+        });
+        // Show selected topic
+        const selected = document.getElementById('topic-' + topicId);
+        if (selected) selected.style.display = 'block';
+        
+        // Update active button style
+        document.querySelectorAll('.topic-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        const activeBtn = document.querySelector(`.topic-btn[data-topic="${topicId}"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+</script>
+
 {% endblock %}

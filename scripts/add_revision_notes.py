@@ -1,9 +1,12 @@
 import os
+import sys
 import django
+
+# Add the project directory to Python path
+sys.path.append('C:\\Users\\Dell\\igcse-chemistry-platform')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chemistry_hub.settings')
 django.setup()
-
 from pastpapers.models import Topic, TopicNote
 
 # Complete content for Topic 1: States of Matter

@@ -9,7 +9,7 @@ urlpatterns = [
     path('topic/<int:topic_id>/practice/', views.topic_practice, name='topic_practice'),
     path('subtopic/<int:subtopic_id>/practice/', views.subtopic_practice, name='subtopic_practice'),
     
-    # New pages
+    # Revision and Study
     path('revision-notes/', views.revision_notes, name='revision_notes'),
     path('flashcards/', views.flashcards, name='flashcards'),
     path('exam-questions/', views.exam_questions, name='exam_questions'),
