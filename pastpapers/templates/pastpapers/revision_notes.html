@@ -1,83 +1,241 @@
 {% extends 'pastpapers/base.html' %}
 {% load custom_filters %}
+
 {% block title %}Revision Notes{% endblock %}
 
 {% block content %}
 
-<div class="section-header">
-    <h1>📖 Revision Notes</h1>
-    <p style="color: #6c757d;">Complete syllabus notes for IGCSE Chemistry 0620</p>
+<style>
+    .revision-header {
+        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 20px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .revision-header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .topic-buttons {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+    
+    .topic-btn {
+        background: white;
+        border: 2px solid #e0e0e0;
+        padding: 0.6rem 1.2rem;
+        border-radius: 40px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        color: #333;
+    }
+    
+    .topic-btn:hover {
+        border-color: #2e7d32;
+        background: #f5f5f5;
+    }
+    
+    .topic-btn.active {
+        background: #2e7d32;
+        border-color: #2e7d32;
+        color: white;
+    }
+    
+    .notes-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        background: #f8f9fa;
+        padding: 1rem 1.5rem;
+        border-bottom: 2px solid #2e7d32;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #2e7d32;
+    }
+    
+    .point-item {
+        border-bottom: 1px solid #eee;
+    }
+    
+    .point-question {
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        transition: background 0.2s;
+        font-weight: 500;
+    }
+    
+    .point-question:hover {
+        background: #f8f9fa;
+    }
+    
+    .point-question .icon {
+        font-size: 1.2rem;
+        color: #2e7d32;
+        transition: transform 0.2s;
+    }
+    
+    .point-item.open .point-question .icon {
+        transform: rotate(180deg);
+    }
+    
+    .point-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background: #fafbfe;
+        border-top: 1px solid #eee;
+    }
+    
+    .point-item.open .point-answer {
+        max-height: 2000px;
+        padding: 1.5rem;
+    }
+    
+    .answer-content {
+        line-height: 1.6;
+        color: #333;
+    }
+    
+    .answer-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    
+    .answer-content th {
+        background: #2e7d32;
+        color: white;
+        padding: 10px;
+        text-align: left;
+    }
+    
+    .answer-content td {
+        border: 1px solid #ddd;
+        padding: 8px 10px;
+    }
+    
+    .answer-content tr:nth-child(even) {
+        background: #f9f9f9;
+    }
+    
+    .answer-content pre {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+    }
+    
+    .answer-content .key-point {
+        background: #e8f5e9;
+        border-left: 4px solid #2e7d32;
+        padding: 0.8rem 1rem;
+        margin: 1rem 0;
+        border-radius: 8px;
+    }
+    
+    .supplement-badge {
+        background: #ff9800;
+        color: white;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        margin-left: 0.8rem;
+    }
+    
+    .core-badge {
+        background: #2e7d32;
+        color: white;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        margin-left: 0.8rem;
+    }
+</style>
+
+<div class="revision-header">
+    <h1>📖 IGCSE Chemistry 0620 Revision Notes</h1>
+    <p>Click any statement to reveal the answer. Core content for all students, Supplement for A*-C candidates.</p>
 </div>
 
-<!-- Topic Navigation -->
-<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
+<!-- Topic Buttons -->
+<div class="topic-buttons">
     {% for topic in topics %}
-    <button onclick="showTopic({{ topic.id }})" class="topic-btn" data-topic="{{ topic.id }}" style="background: white; border: 1px solid #ddd; padding: 0.5rem 1rem; border-radius: 25px; cursor: pointer; font-size: 0.9rem;">
+    <button onclick="showTopic({{ topic.id }})" class="topic-btn" data-topic="{{ topic.id }}">
         {{ topic.code }}. {{ topic.name }}
     </button>
     {% endfor %}
 </div>
 
-<!-- Notes Content Area -->
-<div id="notes-content" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-    {% for topic in topics %}
-    <div id="topic-{{ topic.id }}" class="topic-notes" style="display: {% if forloop.first %}block{% else %}none{% endif %};">
+<!-- Notes Content -->
+{% for topic in topics %}
+<div id="topic-{{ topic.id }}" class="topic-notes" style="display: {% if forloop.first %}block{% else %}none{% endif %};">
+    <div class="notes-card">
+        <div class="section-title">
+            📌 Topic {{ topic.code }}: {{ topic.name }}
+        </div>
+        
         {% with note=notes|get_item:topic.id %}
-            {{ note|safe }}
+            {% if note %}
+                {{ note|safe }}
+            {% else %}
+                <div style="padding: 2rem; text-align: center; color: #666;">
+                    📝 Revision notes for this topic coming soon!
+                </div>
+            {% endif %}
         {% endwith %}
     </div>
-    {% endfor %}
 </div>
-
-<style>
-    .topic-btn.active {
-        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
-        color: white;
-        border-color: transparent;
-    }
-    .topic-btn:hover {
-        border-color: #2e7d32;
-    }
-    .notes-container table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1rem 0;
-    }
-    .notes-container th, .notes-container td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    .notes-container th {
-        background-color: #2e7d32;
-        color: white;
-    }
-    .notes-container pre {
-        background: #f8f9fa;
-        padding: 1rem;
-        border-radius: 8px;
-        overflow-x: auto;
-        font-family: monospace;
-    }
-</style>
+{% endfor %}
 
 <script>
     function showTopic(topicId) {
-        // Hide all topic notes
+        // Hide all topics
         document.querySelectorAll('.topic-notes').forEach(el => {
             el.style.display = 'none';
         });
         // Show selected topic
-        const selected = document.getElementById('topic-' + topicId);
-        if (selected) selected.style.display = 'block';
+        document.getElementById('topic-' + topicId).style.display = 'block';
         
-        // Update active button style
+        // Update active button
         document.querySelectorAll('.topic-btn').forEach(btn => {
             btn.classList.remove('active');
         });
-        const activeBtn = document.querySelector(`.topic-btn[data-topic="${topicId}"]`);
-        if (activeBtn) activeBtn.classList.add('active');
+        document.querySelector(`.topic-btn[data-topic="${topicId}"]`).classList.add('active');
     }
+    
+    // Make all point items clickable
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.point-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const parent = this.closest('.point-item');
+                if (parent) {
+                    parent.classList.toggle('open');
+                }
+            });
+        });
+    });
 </script>
 
 {% endblock %}
