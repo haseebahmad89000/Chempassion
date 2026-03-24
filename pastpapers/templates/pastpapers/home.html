@@ -11,13 +11,41 @@
     .home-container {
         max-width: 1200px;
         margin: 0 auto;
+        position: relative;
+        z-index: 2;
     }
     
-    /* Compact Hero Section */
-    .hero-compact {
-        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
-        border-radius: 20px;
-        padding: 1.8rem 2rem;
+    /* Animated Background */
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+    
+    .floating-molecule {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.1;
+        animation: float 20s infinite linear;
+        pointer-events: none;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0.1; }
+        100% { transform: translateY(-20vh) rotate(360deg); opacity: 0.3; }
+    }
+    
+    /* Hero Section with Gradient */
+    .hero-gradient {
+        background: linear-gradient(135deg, rgba(46,125,50,0.95) 0%, rgba(27,94,32,0.95) 50%, rgba(0,100,0,0.95) 100%);
+        backdrop-filter: blur(2px);
+        border-radius: 24px;
+        padding: 2rem;
         margin-bottom: 2rem;
         color: white;
         display: flex;
@@ -25,101 +53,140 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 1.5rem;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-gradient::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: pulse 8s infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.5); opacity: 0.6; }
+        100% { transform: scale(1); opacity: 0.3; }
     }
     
     .hero-left {
         flex: 2;
+        position: relative;
+        z-index: 2;
     }
     
     .hero-badge {
         display: inline-block;
-        background: rgba(255,255,255,0.2);
-        padding: 0.2rem 0.8rem;
-        border-radius: 20px;
+        background: rgba(255,255,255,0.25);
+        backdrop-filter: blur(4px);
+        padding: 0.3rem 1rem;
+        border-radius: 30px;
         font-size: 0.7rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
     }
     
     .hero-left h1 {
-        font-size: 1.3rem;
-        margin-bottom: 0.2rem;
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
     
     .hero-left .exam-code {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         opacity: 0.9;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
+        letter-spacing: 1px;
     }
     
     .hero-left p {
-        font-size: 0.8rem;
-        opacity: 0.9;
-        max-width: 400px;
+        font-size: 0.9rem;
+        opacity: 0.95;
+        max-width: 450px;
+        line-height: 1.4;
     }
     
     .hero-stats {
         display: flex;
-        gap: 1.5rem;
-        margin-top: 0.8rem;
+        gap: 2rem;
+        margin-top: 1.2rem;
     }
     
     .hero-stat {
         text-align: center;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(4px);
+        padding: 0.5rem 1rem;
+        border-radius: 16px;
+        min-width: 80px;
     }
     
     .hero-stat .number {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         font-weight: bold;
     }
     
     .hero-stat .label {
-        font-size: 0.6rem;
-        opacity: 0.8;
+        font-size: 0.65rem;
+        opacity: 0.9;
     }
     
     .hero-right {
         flex: 1;
         text-align: right;
+        position: relative;
+        z-index: 2;
     }
     
     .hero-buttons {
         display: flex;
-        gap: 0.8rem;
+        gap: 1rem;
         justify-content: flex-end;
     }
     
-    .btn-light {
-        background: white;
-        color: #2e7d32;
-        padding: 0.4rem 1rem;
-        border-radius: 30px;
+    .btn-gradient {
+        background: linear-gradient(135deg, #ffd89b, #c7e9fb);
+        color: #1b5e20;
+        padding: 0.6rem 1.2rem;
+        border-radius: 40px;
         text-decoration: none;
-        font-size: 0.75rem;
-        font-weight: 500;
-        transition: all 0.2s;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s;
         display: inline-block;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     
-    .btn-light:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    .btn-gradient:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     
     .btn-outline-light {
-        border: 1px solid white;
+        border: 2px solid white;
         color: white;
-        padding: 0.4rem 1rem;
-        border-radius: 30px;
+        padding: 0.6rem 1.2rem;
+        border-radius: 40px;
         text-decoration: none;
-        font-size: 0.75rem;
-        font-weight: 500;
-        transition: all 0.2s;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s;
         display: inline-block;
+        background: rgba(0,0,0,0.2);
     }
     
     .btn-outline-light:hover {
         background: white;
-        color: #2e7d32;
+        color: #1b5e20;
+        transform: translateY(-3px);
     }
     
     /* Features Grid */
@@ -131,66 +198,71 @@
     }
     
     .feature-card {
-        background: white;
-        border-radius: 16px;
-        padding: 1rem;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(4px);
+        border-radius: 20px;
+        padding: 1.2rem;
         text-align: center;
-        transition: all 0.2s;
-        border: 1px solid #e9ecef;
+        transition: all 0.3s;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .feature-card:hover {
-        transform: translateY(-3px);
+        transform: translateY(-5px);
+        background: white;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         border-color: #2e7d32;
-        box-shadow: 0 8px 20px rgba(46,125,50,0.1);
     }
     
     .feature-icon {
-        font-size: 1.6rem;
-        margin-bottom: 0.5rem;
+        font-size: 2rem;
+        margin-bottom: 0.6rem;
     }
     
     .feature-card h3 {
-        font-size: 0.9rem;
-        margin-bottom: 0.2rem;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
         color: #1a2a3a;
     }
     
     .feature-card p {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         color: #6c757d;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.6rem;
     }
     
     .feature-link {
         color: #2e7d32;
         text-decoration: none;
-        font-size: 0.7rem;
-        font-weight: 500;
+        font-size: 0.75rem;
+        font-weight: 600;
     }
     
     /* Specialities Section */
     .specialities-section {
-        background: #f8f9fa;
-        border-radius: 20px;
-        padding: 1.5rem;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(4px);
+        border-radius: 24px;
+        padding: 1.8rem;
         margin-bottom: 2rem;
-        border: 1px solid #e9ecef;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .specialities-header {
         text-align: center;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.5rem;
     }
     
     .specialities-header h2 {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         color: #1a2a3a;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.3rem;
     }
     
     .specialities-header p {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         color: #6c757d;
     }
     
@@ -204,22 +276,24 @@
     .speciality-item {
         background: white;
         padding: 0.8rem 0.5rem;
-        border-radius: 12px;
-        transition: all 0.2s;
+        border-radius: 16px;
+        transition: all 0.3s;
+        border: 1px solid #e9ecef;
     }
     
     .speciality-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transform: translateY(-3px);
+        border-color: #2e7d32;
+        box-shadow: 0 8px 20px rgba(46,125,50,0.15);
     }
     
     .speciality-icon {
-        font-size: 1.2rem;
-        margin-bottom: 0.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.4rem;
     }
     
     .speciality-title {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         font-weight: 600;
         color: #2e7d32;
         margin-bottom: 0.2rem;
@@ -230,8 +304,24 @@
         color: #6c757d;
     }
     
+    /* Chemistry Quote */
+    .chemistry-quote {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(46,125,50,0.2);
+        backdrop-filter: blur(4px);
+        border-radius: 40px;
+        margin-top: 1rem;
+    }
+    
+    .chemistry-quote p {
+        font-size: 0.8rem;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    
     @media (max-width: 768px) {
-        .hero-compact {
+        .hero-gradient {
             flex-direction: column;
             text-align: center;
         }
@@ -250,17 +340,34 @@
         .specialities-grid {
             grid-template-columns: repeat(2, 1fr);
         }
+        .hero-left h1 {
+            font-size: 1.3rem;
+        }
     }
 </style>
 
+<!-- Animated Background with Molecules -->
+<div class="animated-bg">
+    <div class="floating-molecule" style="left: 5%; animation-duration: 18s;">🧪</div>
+    <div class="floating-molecule" style="left: 15%; animation-duration: 22s; font-size: 1.5rem;">⚛️</div>
+    <div class="floating-molecule" style="left: 25%; animation-duration: 25s;">🔬</div>
+    <div class="floating-molecule" style="left: 35%; animation-duration: 20s;">🧫</div>
+    <div class="floating-molecule" style="left: 45%; animation-duration: 28s;">🧪</div>
+    <div class="floating-molecule" style="left: 55%; animation-duration: 15s;">⚛️</div>
+    <div class="floating-molecule" style="left: 65%; animation-duration: 24s;">🔬</div>
+    <div class="floating-molecule" style="left: 75%; animation-duration: 30s;">🧫</div>
+    <div class="floating-molecule" style="left: 85%; animation-duration: 19s;">🧪</div>
+    <div class="floating-molecule" style="left: 95%; animation-duration: 26s;">⚛️</div>
+</div>
+
 <div class="home-container">
-    <!-- Compact Hero Section -->
-    <div class="hero-compact">
+    <!-- Gradient Hero Section -->
+    <div class="hero-gradient">
         <div class="hero-left">
-            <div class="hero-badge">Cambridge IGCSE</div>
+            <div class="hero-badge">✨ Cambridge IGCSE ✨</div>
             <h1>IGCSE Chemistry 0620</h1>
-            <div class="exam-code">0620 & 0971</div>
-            <p>Free notes, practice questions, and past papers</p>
+            <div class="exam-code">0620 & 0971 | Extended & Core</div>
+            <p>Master Chemistry with interactive notes, past papers, and live classes — 100% free!</p>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="number">50K+</div>
@@ -278,8 +385,8 @@
         </div>
         <div class="hero-right">
             <div class="hero-buttons">
-                <a href="{% url 'revision_notes' %}" class="btn-light">📖 Start Learning</a>
-                <a href="{% url 'exam_questions' %}" class="btn-outline-light">📝 Practice</a>
+                <a href="{% url 'revision_notes' %}" class="btn-gradient">📖 Start Learning →</a>
+                <a href="{% url 'exam_questions' %}" class="btn-outline-light">📝 Practice Now</a>
             </div>
         </div>
     </div>
@@ -289,33 +396,33 @@
         <div class="feature-card">
             <div class="feature-icon">📝</div>
             <h3>Revision Notes</h3>
-            <p>Concise notes covering all topics</p>
+            <p>Concise notes covering all 11 topics</p>
             <a href="{% url 'revision_notes' %}" class="feature-link">Browse →</a>
         </div>
         <div class="feature-card">
             <div class="feature-icon">📋</div>
             <h3>Exam Questions</h3>
-            <p>Past paper questions with answers</p>
+            <p>Past paper questions with mark schemes</p>
             <a href="{% url 'exam_questions' %}" class="feature-link">Practice →</a>
         </div>
         <div class="feature-card">
             <div class="feature-icon">📄</div>
             <h3>Past Papers</h3>
-            <p>Full papers with mark schemes</p>
+            <p>Full papers with detailed solutions</p>
             <a href="{% url 'past_papers' %}" class="feature-link">Download →</a>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🎬</div>
             <h3>Live Classes</h3>
-            <p>Interactive revision sessions</p>
-            <a href="{% url 'live_classes' %}" class="feature-link">Join →</a>
+            <p>Weekly revision sessions with experts</p>
+            <a href="{% url 'live_classes' %}" class="feature-link">Join Live →</a>
         </div>
     </div>
     
     <!-- Specialities Section -->
     <div class="specialities-section">
         <div class="specialities-header">
-            <h2>✨ Why Choose ChemPassion?</h2>
+            <h2>✨ Why 50,000+ Students Love ChemPassion</h2>
             <p>Everything you need to ace your IGCSE Chemistry exams</p>
         </div>
         <div class="specialities-grid">
@@ -327,12 +434,12 @@
             <div class="speciality-item">
                 <div class="speciality-icon">👩‍🏫</div>
                 <div class="speciality-title">Expert-Crafted</div>
-                <div class="speciality-desc">By teachers & examiners</div>
+                <div class="speciality-desc">By experienced teachers</div>
             </div>
             <div class="speciality-item">
                 <div class="speciality-icon">📥</div>
                 <div class="speciality-title">Free Downloads</div>
-                <div class="speciality-desc">Notes & past papers</div>
+                <div class="speciality-desc">Notes & past papers PDF</div>
             </div>
             <div class="speciality-item">
                 <div class="speciality-icon">🎯</div>
@@ -344,7 +451,37 @@
                 <div class="speciality-title">Examiner Tips</div>
                 <div class="speciality-desc">Avoid common mistakes</div>
             </div>
+            <div class="speciality-item">
+                <div class="speciality-icon">🧪</div>
+                <div class="speciality-title">Practical Skills</div>
+                <div class="speciality-desc">Lab techniques & experiments</div>
+            </div>
+            <div class="speciality-item">
+                <div class="speciality-icon">📊</div>
+                <div class="speciality-title">Progress Tracking</div>
+                <div class="speciality-desc">Monitor your improvement</div>
+            </div>
+            <div class="speciality-item">
+                <div class="speciality-icon">🎓</div>
+                <div class="speciality-title">Past Paper Analysis</div>
+                <div class="speciality-desc">Common question patterns</div>
+            </div>
+            <div class="speciality-item">
+                <div class="speciality-icon">⚡</div>
+                <div class="speciality-title">Quick Revision</div>
+                <div class="speciality-desc">Last-minute summaries</div>
+            </div>
+            <div class="speciality-item">
+                <div class="speciality-icon">🌍</div>
+                <div class="speciality-title">Global Community</div>
+                <div class="speciality-desc">Join 50K+ students</div>
+            </div>
         </div>
+    </div>
+    
+    <!-- Chemistry Quote -->
+    <div class="chemistry-quote">
+        <p>🧪 "Chemistry is the study of matter — but we make learning it matter!" 🧪</p>
     </div>
 </div>
 {% endblock %}
