@@ -3,21 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block sidebar %}
-<aside class="sidebar">
-    <div class="sidebar-card">
-        <div class="sidebar-header" onclick="toggleSidebar()">
-            <span>📚 Topics</span>
-            <span>▼</span>
-        </div>
-        <div class="sidebar-content">
-            {% for topic in topics %}
-            <a href="{% url 'topic_detail' topic.id %}" class="topic-link">
-                Topic {{ topic.code }}: {{ topic.name }}
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-</aside>
 {% endblock %}
 
 {% block content %}
