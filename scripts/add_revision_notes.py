@@ -8,16 +8,83 @@ django.setup()
 
 from pastpapers.models import Topic, TopicNote
 
-content_topic_1 = """
+new_content = """<style>
+.main-heading {
+    background: #2e7d32;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.sub-heading {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1.5rem 0 1rem 0;
+    border-left: 4px solid #2e7d32;
+}
+.point-number {
+    font-weight: bold;
+    color: #2e7d32;
+    margin-right: 0.8rem;
+    font-size: 1rem;
+}
+.supplement-badge {
+    background: #ff9800;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-left: 0.8rem;
+}
+.point-question {
+    cursor: pointer;
+    padding: 0.8rem;
+    background: white;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.point-question:hover {
+    background: #f9f9f9;
+}
+.point-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #fafbfe;
+}
+.point-item.open .point-answer {
+    max-height: 2000px;
+    padding: 1rem;
+}
+.icon {
+    transition: transform 0.2s;
+}
+.point-item.open .icon {
+    transform: rotate(180deg);
+}
+</style>
+
+<div class="main-heading">📌 Topic 1: States of Matter</div>
+
+<div class="sub-heading">1.1 Solids, liquids and gases</div>
+
 <div class="point-item">
     <div class="point-question">
-        <span><strong>1.1 Point 1:</strong> State the distinguishing properties of solids, liquids and gases</span>
+        <span><span class="point-number">1</span> State the distinguishing properties of solids, liquids and gases</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
             <table style="width:100%; border-collapse: collapse;">
-                <tr style="background:#2e7d32; color:white;"><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
+                <tr style="background:#2e7d32; color:white;"><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th> </tr>
                 <tr><td><strong>Shape</strong></td><td>Fixed shape</td><td>Takes shape of container</td><td>Takes shape of container</td></tr>
                 <tr style="background:#f9f9f9;"><td><strong>Volume</strong></td><td>Fixed volume</td><td>Fixed volume</td><td>Fills container</td></tr>
                 <tr><td><strong>Compressibility</strong></td><td>Very difficult</td><td>Difficult</td><td>Easy to compress</td></tr>
@@ -30,13 +97,13 @@ content_topic_1 = """
 
 <div class="point-item">
     <div class="point-question">
-        <span><strong>1.1 Point 2:</strong> Describe the structures of solids, liquids and gases in terms of particle separation, arrangement and motion</span>
+        <span><span class="point-number">2</span> Describe the structures of solids, liquids and gases in terms of particle separation, arrangement and motion</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
             <table style="width:100%; border-collapse: collapse;">
-                <tr style="background:#2e7d32; color:white;"><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
+                <tr style="background:#2e7d32; color:white;"><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th> </tr>
                 <tr><td><strong>Particle separation</strong></td><td>Very close (touching)</td><td>Close (touching)</td><td>Far apart</td></tr>
                 <tr style="background:#f9f9f9;"><td><strong>Arrangement</strong></td><td>Regular pattern</td><td>Random</td><td>Random</td></tr>
                 <tr><td><strong>Motion</strong></td><td>Vibrate in fixed positions</td><td>Move around each other</td><td>Move quickly in all directions</td></tr>
@@ -53,13 +120,13 @@ SOLID:              LIQUID:              GAS:
 
 <div class="point-item">
     <div class="point-question">
-        <span><strong>1.1 Point 3:</strong> Describe changes of state in terms of melting, boiling, evaporating, freezing and condensing</span>
+        <span><span class="point-number">3</span> Describe changes of state in terms of melting, boiling, evaporating, freezing and condensing</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
             <table style="width:100%; border-collapse: collapse;">
-                <tr style="background:#2e7d32; color:white;"><th>Change</th><th>From → To</th><th>Energy</th></tr>
+                <tr style="background:#2e7d32; color:white;"><th>Change</th><th>From → To</th><th>Energy</th> </tr>
                 <tr><td><strong>Melting</strong></td><td>Solid → Liquid</td><td>Heat absorbed</td></tr>
                 <tr style="background:#f9f9f9;"><td><strong>Freezing</strong></td><td>Liquid → Solid</td><td>Heat released</td></tr>
                 <tr><td><strong>Boiling</strong></td><td>Liquid → Gas</td><td>Heat absorbed</td></tr>
@@ -77,13 +144,13 @@ SOLID ──────────► LIQUID ───────────
 
 <div class="point-item">
     <div class="point-question">
-        <span><strong>1.1 Point 4:</strong> Describe the effects of temperature and pressure on the volume of a gas</span>
+        <span><span class="point-number">4</span> Describe the effects of temperature and pressure on the volume of a gas</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
             <table style="width:100%; border-collapse: collapse;">
-                <tr style="background:#2e7d32; color:white;"><th>Condition</th><th>Effect</th><th>Explanation</th></tr>
+                <tr style="background:#2e7d32; color:white;"><th>Condition</th><th>Effect</th><th>Explanation</th> </tr>
                 <tr><td><strong>Temperature ↑</strong></td><td>Volume ↑</td><td>Particles gain kinetic energy, move more, push walls outward</td></tr>
                 <tr style="background:#f9f9f9;"><td><strong>Temperature ↓</strong></td><td>Volume ↓</td><td>Particles lose energy, move less, walls move inward</td></tr>
                 <tr><td><strong>Pressure ↑</strong></td><td>Volume ↓</td><td>Particles forced closer together</td></tr>
@@ -95,7 +162,7 @@ SOLID ──────────► LIQUID ───────────
 
 <div class="point-item">
     <div class="point-question">
-        <span><strong>⭐ Supplement 1.1 Point 5:</strong> Explain changes of state using kinetic particle theory, including heating/cooling curves</span>
+        <span><span class="point-number">5</span> Explain changes of state in terms of kinetic particle theory, including the interpretation of heating and cooling curves <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -118,7 +185,7 @@ Temperature
     │        Solid + Liquid
     │      ───────────────────→ Time
     │      Solid</pre>
-            <div style="background:#e8f5e9; border-left:4px solid #2e7d32; padding:0.8rem 1rem; margin:1rem 0; border-radius:8px;">
+            <div style="background:#e8f5e9; border-left:4px solid #2e7d32; padding:0.8rem 1rem; border-radius:8px;">
                 🔑 <strong>Key Point:</strong> During a change of state, temperature remains constant. Energy goes into breaking/forming bonds between particles.
             </div>
         </div>
@@ -127,7 +194,7 @@ Temperature
 
 <div class="point-item">
     <div class="point-question">
-        <span><strong>⭐ Supplement 1.1 Point 6:</strong> Explain the effects of temperature and pressure on gas volume using kinetic particle theory</span>
+        <span><span class="point-number">6</span> Explain, in terms of kinetic particle theory, the effects of temperature and pressure on the volume of a gas <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -138,15 +205,17 @@ Temperature
     </div>
 </div>
 
+<div class="sub-heading">1.2 Diffusion</div>
+
 <div class="point-item">
     <div class="point-question">
-        <span><strong>1.2 Point 1:</strong> Describe and explain diffusion in terms of kinetic particle theory</span>
+        <span><span class="point-number">1</span> Describe and explain diffusion in terms of kinetic particle theory</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
             <p><strong>Definition:</strong> Diffusion is the net movement of particles from a region of higher concentration to a region of lower concentration, until evenly distributed.</p>
-            <p><strong>Explanation:</strong> Particles are in constant random motion. They move from areas where there are many particles to areas where there are fewer. This continues until particles are evenly spread.</p>
+            <p><strong>Explanation:</strong> Particles are in constant random motion. They move from areas where there are many particles to areas where there are fewer.</p>
             <p><strong>Examples:</strong> Perfume spreading across a room, food coloring in water, oxygen entering blood in lungs.</p>
         </div>
     </div>
@@ -154,13 +223,13 @@ Temperature
 
 <div class="point-item">
     <div class="point-question">
-        <span><strong>⭐ Supplement 1.2 Point 2:</strong> Explain the effect of relative molecular mass on the rate of diffusion of gases</span>
+        <span><span class="point-number">2</span> Describe and explain the effect of relative molecular mass on the rate of diffusion of gases <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
             <table style="width:100%; border-collapse: collapse;">
-                <tr style="background:#ff9800; color:white;"><th>Gas</th><th>Mr</th><th>Relative Rate</th></tr>
+                <tr style="background:#ff9800; color:white;"><th>Gas</th><th>Mr</th><th>Relative Rate</th> </tr>
                 <tr><td>Hydrogen (H₂)</td><td>2</td><td>Very fast</td></tr>
                 <tr style="background:#f9f9f9;"><td>Helium (He)</td><td>4</td><td>Fast</td></tr>
                 <tr><td>Oxygen (O₂)</td><td>32</td><td>Slow</td></tr>
@@ -170,19 +239,8 @@ Temperature
             <p><strong>Explanation:</strong> At the same temperature, all gas particles have the same average kinetic energy (KE = ½mv²). Lighter particles must move faster, so they diffuse faster.</p>
         </div>
     </div>
-</div>
+</div>"""
 
-<div style="background:#e8f5e9; border-left:4px solid #2e7d32; padding:1rem; margin-top:1.5rem; border-radius:8px;">
-    🧪 <strong>Summary:</strong> Solids have fixed shape and volume with regular particle arrangement. Liquids take shape of container with random particle arrangement. Gases fill any container with particles far apart and moving randomly.
-</div>
-"""
-
-# Update the topic note
 topic = Topic.objects.get(code='1')
-note, created = TopicNote.objects.update_or_create(
-    topic=topic,
-    defaults={'content': content_topic_1}
-)
-print(f"✅ Updated revision notes for {topic.name}")
-print("📝 Content now uses click-to-reveal format")
-print("🔗 View at: https://chempassion.info/revision-notes/")
+note, created = TopicNote.objects.update_or_create(topic=topic, defaults={'content': new_content})
+print(f"✅ Updated {topic.name} with syllabus style (no 'Point' labels, separate Diffusion section)")

@@ -13,27 +13,18 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            background: #f8f9fa;
             color: #1a1a2e;
         }
         
-        /* Header with Gradient Animation */
+        /* Header - Clean & Simple */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 10s ease infinite;
-            color: white;
-            padding: 1rem 2rem;
+            background: white;
+            border-bottom: 1px solid #e9ecef;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            padding: 0.75rem 2rem;
         }
         
         .header-content {
@@ -47,182 +38,176 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
         
         .logo-icon {
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            font-size: 1.5rem;
         }
         
         .logo-text h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 1.1rem;
+            color: #2c3e66;
         }
         
         .logo-text p {
             font-size: 0.7rem;
-            opacity: 0.9;
+            color: #6c757d;
         }
         
         .nav {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             align-items: center;
         }
         
         .nav a {
             text-decoration: none;
-            color: white;
+            color: #4a5568;
             font-weight: 500;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            padding: 0.5rem 0.75rem;
         }
         
         .nav a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
+            color: #2e7d32;
+        }
+        
+        .nav a.active {
+            color: #2e7d32;
+            border-bottom: 2px solid #2e7d32;
         }
         
         .btn-login {
-            background: white;
-            color: #667eea !important;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: #2e7d32;
+            color: white !important;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
         }
         
         .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background: #1b5e20;
         }
         
-        /* Hero Banner */
-        .hero-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 1rem 2rem;
-            border-radius: 24px;
-            padding: 2.5rem;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .hero-banner::before {
-            content: "🧪";
-            font-size: 150px;
-            position: absolute;
-            right: -30px;
-            bottom: -30px;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
-        .hero-banner::after {
-            content: "📚";
-            font-size: 120px;
-            position: absolute;
-            left: -20px;
-            top: -20px;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
-        .hero-banner h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-        
-        .hero-banner p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-        
-        /* Main Layout */
+        /* Main Layout - Two Column */
         .main-layout {
-            display: flex;
             max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
             gap: 2rem;
         }
         
+        /* Sidebar */
         .sidebar {
             width: 280px;
             flex-shrink: 0;
         }
         
-        .sidebar-menu {
+        .sidebar-card {
             background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px);
-        }
-        
-        .sidebar-menu h3 {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: #667eea;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-        
-        .sidebar-menu a {
-            display: block;
-            padding: 0.7rem 1rem;
-            color: #4a5568;
-            text-decoration: none;
             border-radius: 12px;
-            margin-bottom: 0.25rem;
-            font-size: 0.9rem;
+            border: 1px solid #e9ecef;
+            overflow: hidden;
+            position: sticky;
+            top: 80px;
+        }
+        
+        .sidebar-header {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .sidebar-header:hover {
+            background: #e9ecef;
+        }
+        
+        .sidebar-content {
+            max-height: 500px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease;
+        }
+        
+        .sidebar-content.collapsed {
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .topic-link {
+            display: block;
+            padding: 0.6rem 1rem;
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f0f0f0;
             transition: all 0.2s;
         }
         
-        .sidebar-menu a:hover {
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            color: #667eea;
-            transform: translateX(5px);
+        .topic-link:hover {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding-left: 1.3rem;
         }
         
+        .topic-link.active {
+            background: #2e7d32;
+            color: white;
+        }
+        
+        /* Main Content */
         .content {
             flex: 1;
+            min-width: 0;
+        }
+        
+        /* Hero Section - Small (Homepage Only) */
+        .hero-small {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .hero-small h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .hero-small p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .hero-stats-small {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .stat-small {
+            text-align: center;
+        }
+        
+        .stat-number-small {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .stat-label-small {
+            font-size: 0.7rem;
+            opacity: 0.9;
         }
         
         /* Cards */
@@ -235,232 +220,42 @@
         
         .feature-card {
             background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s;
+            border-radius: 16px;
+            padding: 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s;
             text-decoration: none;
             color: inherit;
             display: block;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border: 1px solid #e9ecef;
         }
         
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: #2e7d32;
         }
         
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
         }
         
         .feature-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #1a1a2e;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
         }
         
         .feature-card p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #6c757d;
-            line-height: 1.4;
-        }
-        
-        .feature-badge {
-            display: inline-block;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: #667eea;
-            font-weight: 600;
-        }
-        
-        /* Topic Cards */
-        .topic-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 0.75rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s;
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .topic-card:hover {
-            background: linear-gradient(135deg, #667eea08 0%, #764ba208 100%);
-            border-color: #667eea;
-            transform: translateX(5px);
-        }
-        
-        .topic-name {
-            font-weight: 600;
-        }
-        
-        .topic-code {
-            font-size: 0.7rem;
-            color: #667eea;
-            font-weight: 500;
-        }
-        
-        .topic-stats {
-            font-size: 0.75rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-        }
-        
-        /* Section Header */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin: 2rem 0 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .section-header h2 {
-            font-size: 1.3rem;
-            color: #1a1a2e;
-            position: relative;
-            padding-left: 1rem;
-        }
-        
-        .section-header h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 4px;
-        }
-        
-        .section-link {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        /* Framework Steps */
-        .framework {
-            background: linear-gradient(135deg, white 0%, #f8f9ff 100%);
-            border-radius: 24px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-        }
-        
-        .framework h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .framework-steps {
-            display: flex;
-            gap: 2rem;
-            justify-content: space-between;
-        }
-        
-        .step {
-            flex: 1;
-            text-align: center;
-            padding: 1rem;
-        }
-        
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
-        }
-        
-        .step h4 {
-            margin-bottom: 0.5rem;
-            color: #1a1a2e;
-        }
-        
-        .step p {
-            font-size: 0.85rem;
-            color: #6c757d;
-        }
-        
-        /* Live Classes */
-        .live-class-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid #667eea;
-            transition: all 0.2s;
-        }
-        
-        .live-class-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .live-date {
-            font-size: 0.7rem;
-            color: #667eea;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        
-        .live-title {
-            font-weight: 600;
-            margin: 0.5rem 0;
-        }
-        
-        .btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 500;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #667eea;
-            color: #667eea;
-        }
-        
-        .btn-outline:hover {
-            background: #667eea;
-            color: white;
         }
         
         /* Footer */
         .footer {
             background: #1a1a2e;
             color: #adb5bd;
-            padding: 3rem 2rem 1.5rem;
+            padding: 2rem 2rem 1rem;
             margin-top: 3rem;
         }
         
@@ -468,35 +263,30 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
         }
         
         .footer-section h4 {
             color: white;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
         }
         
         .footer-section a {
             display: block;
             color: #adb5bd;
             text-decoration: none;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            transition: color 0.2s;
-        }
-        
-        .footer-section a:hover {
-            color: #667eea;
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
             border-top: 1px solid #2d3748;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
         
         @media (max-width: 768px) {
@@ -507,29 +297,128 @@
             .sidebar {
                 width: 100%;
             }
-            .framework-steps {
+            .hero-small {
                 flex-direction: column;
-                gap: 1rem;
-            }
-            .hero-banner h1 {
-                font-size: 1.5rem;
-            }
-            .hero-stats {
-                gap: 1rem;
+                text-align: center;
             }
             .nav {
                 display: none;
             }
         }
         
-        /* Floating Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .btn {
+            background: #2e7d32;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-block;
         }
         
-        .floating {
-            animation: float 3s ease-in-out infinite;
+        .btn:hover {
+            background: #1b5e20;
+        }
+        
+        .section-header {
+            margin-bottom: 1rem;
+        }
+        
+        .section-header h2 {
+            font-size: 1.2rem;
+            color: #1a1a2e;
+        }
+        
+        /* Revision Notes Specific */
+        .point-item {
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .point-question {
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            font-weight: 500;
+        }
+        
+        .point-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .point-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #fafbfe;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .point-item.open .point-answer {
+            max-height: 2000px;
+            padding: 1rem;
+        }
+        
+        .point-number {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-right: 0.8rem;
+        }
+        
+        .supplement-badge {
+            background: #ff9800;
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+        }
+        
+        .main-heading {
+            background: #2e7d32;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .sub-heading {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-weight: bold;
+            border-left: 4px solid #2e7d32;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th {
+            background: #2e7d32;
+            color: white;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
         }
     </style>
     {% block extra_css %}{% endblock %}
@@ -538,66 +427,33 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <div class="logo-icon floating">🧪</div>
+                <div class="logo-icon">🧪</div>
                 <div class="logo-text">
                     <h1>IGCSE Chemistry 0620</h1>
-                    <p>Cambridge IGCSE • Ace Your Exams!</p>
+                    <p>Cambridge IGCSE</p>
                 </div>
             </div>
             <nav class="nav">
-                <a href="{% url 'home' %}">Course</a>
-                <a href="{% url 'revision_notes' %}">Notes</a>
-                <a href="{% url 'flashcards' %}">Flashcards</a>
-                <a href="{% url 'exam_questions' %}">Practice</a>
-                <a href="{% url 'live_classes' %}">Live Classes 🔴</a>
+                <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+                <a href="{% url 'revision_notes' %}">Revision Notes</a>
+                <a href="{% url 'exam_questions' %}">Exam Questions</a>
+                <a href="{% url 'past_papers' %}">Past Papers</a>
+                <a href="{% url 'live_classes' %}">Live Classes</a>
                 {% if user.is_authenticated %}
                     <a href="{% url 'dashboard' %}">Dashboard</a>
                     <a href="{% url 'profile' %}">{{ user.username }}</a>
                     <a href="{% url 'logout' %}" class="btn-login">Logout</a>
                 {% else %}
-                    <a href="{% url 'login' %}" class="btn-login">✨ Free Access ✨</a>
+                    <a href="{% url 'login' %}" class="btn-login">Login</a>
                 {% endif %}
             </nav>
         </div>
     </header>
     
-    <div class="hero-banner">
-        <h1>🎓 Master IGCSE Chemistry with Ease! 🧪</h1>
-        <p>Join 50,000+ students already acing their exams with our expert-crafted resources</p>
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-number">50K+</div>
-                <div class="stat-label">Happy Students</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Exam Success Rate</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Practice Questions</div>
-            </div>
-        </div>
-    </div>
-    
     <div class="main-layout">
-        <aside class="sidebar">
-            <div class="sidebar-menu">
-                <h3>📚 COURSE</h3>
-                <a href="{% url 'home' %}">✨ Course Resources</a>
-                <a href="{% url 'strengths_weaknesses' %}">📊 Strengths & Weaknesses</a>
-                <h3 style="margin-top: 1.5rem;">📖 REVISION</h3>
-                <a href="{% url 'revision_notes' %}">📝 Revision Notes</a>
-                <a href="{% url 'flashcards' %}">🃏 Flashcards</a>
-                <h3 style="margin-top: 1.5rem;">✍️ EXAM PRACTICE</h3>
-                <a href="{% url 'exam_questions' %}">🎯 Exam Questions</a>
-                <a href="{% url 'target_test' %}">🎪 Target Test</a>
-                <a href="{% url 'past_papers' %}">📄 Past Papers</a>
-                <a href="{% url 'mock_exams' %}">📋 Mock Exams</a>
-                <h3 style="margin-top: 1.5rem;">🎬 LIVE</h3>
-                <a href="{% url 'live_classes' %}">🔴 Live Classes</a>
-            </div>
-        </aside>
+        {% block sidebar %}
+        <!-- Sidebar will be overridden by child templates -->
+        {% endblock %}
         
         <main class="content">
             {% block content %}{% endblock %}
@@ -607,36 +463,39 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>✨ Dashboard</h4>
+                <h4>Dashboard</h4>
                 <a href="#">Overview</a>
                 <a href="#">Settings</a>
             </div>
             <div class="footer-section">
-                <h4>🏢 Company</h4>
+                <h4>Company</h4>
                 <a href="#">About us</a>
-                <a href="#">Jobs</a>
                 <a href="#">Terms</a>
                 <a href="#">Privacy</a>
             </div>
             <div class="footer-section">
-                <h4>🧪 Subjects</h4>
+                <h4>Subjects</h4>
                 <a href="#">Chemistry</a>
                 <a href="#">Physics</a>
                 <a href="#">Biology</a>
                 <a href="#">Maths</a>
             </div>
             <div class="footer-section">
-                <h4>💬 Help</h4>
+                <h4>Help</h4>
                 <a href="#">Help & Support</a>
-                <a href="#">Contact Us</a>
+                <a href="#">Contact</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>⭐ Made with 🧪 for IGCSE Chemistry students worldwide ⭐</p>
             <p>&copy; 2026 IGCSE Chemistry 0620 Revision Platform</p>
         </div>
     </footer>
     
-    {% block extra_js %}{% endblock %}
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar-content').classList.toggle('collapsed');
+        }
+        {% block extra_js %}{% endblock %}
+    </script>
 </body>
 </html>
