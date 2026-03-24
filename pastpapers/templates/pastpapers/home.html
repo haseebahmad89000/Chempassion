@@ -3,135 +3,75 @@
 {% block title %}Home{% endblock %}
 
 {% block sidebar %}
-<aside class="sidebar">
-    <div class="sidebar-card">
-        <div class="sidebar-header" onclick="toggleSidebar()">
-            <span>📚 Topics</span>
-            <span>▼</span>
-        </div>
-        <div class="sidebar-content">
-            {% for topic in topics %}
-            <a href="{% url 'topic_detail' topic.id %}" class="topic-link">
-                Topic {{ topic.code }}: {{ topic.name }}
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-</aside>
+<!-- No sidebar on homepage -->
 {% endblock %}
 
 {% block content %}
-<!-- Welcome Section -->
-<div class="welcome-card">
-    <div class="welcome-text">
-        <h1>Cambridge IGCSE Chemistry</h1>
-        <p class="exam-code">0620 & 0971</p>
-        <p>Your complete revision platform for IGCSE Chemistry. Free notes, practice questions, and past papers.</p>
-        <div class="stats-row">
-            <div class="stat">
-                <span class="stat-value">50K+</span>
-                <span class="stat-label">Students</span>
-            </div>
-            <div class="stat">
-                <span class="stat-value">500+</span>
-                <span class="stat-label">Questions</span>
-            </div>
-            <div class="stat">
-                <span class="stat-value">98%</span>
-                <span class="stat-label">Success Rate</span>
-            </div>
-        </div>
-        <div class="button-group">
-            <a href="{% url 'revision_notes' %}" class="btn-green">📖 Start Learning</a>
-            <a href="{% url 'exam_questions' %}" class="btn-outline">📝 Practice</a>
-        </div>
-    </div>
-</div>
-
-<!-- Features Row -->
-<div class="features-row">
-    <div class="feature">
-        <div class="feature-icon">📝</div>
-        <h3>Revision Notes</h3>
-        <p>Concise notes covering all topics</p>
-        <a href="{% url 'revision_notes' %}">Browse →</a>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">📋</div>
-        <h3>Exam Questions</h3>
-        <p>Past paper questions with answers</p>
-        <a href="{% url 'exam_questions' %}">Practice →</a>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">📄</div>
-        <h3>Past Papers</h3>
-        <p>Full papers with mark schemes</p>
-        <a href="{% url 'past_papers' %}">Download →</a>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">🎬</div>
-        <h3>Live Classes</h3>
-        <p>Interactive revision sessions</p>
-        <a href="{% url 'live_classes' %}">Join →</a>
-    </div>
-</div>
-
-<!-- Topics List -->
-<div class="topics-list">
-    <h2>All Topics</h2>
-    <div class="topics-grid">
-        {% for topic in topics %}
-        <a href="{% url 'topic_detail' topic.id %}" class="topic-item">
-            <span class="topic-code">Topic {{ topic.code }}</span>
-            <span class="topic-title">{{ topic.name }}</span>
-            <span class="topic-arrow">→</span>
-        </a>
-        {% endfor %}
-    </div>
-</div>
-
 <style>
-    .welcome-card {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
+    .home-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #eef2f3 100%);
+        border-radius: 24px;
+        padding: 2.5rem;
         margin-bottom: 2rem;
-        border: 1px solid #e9ecef;
+        border: 1px solid #e0e4e8;
     }
     
-    .welcome-text h1 {
-        font-size: 1.6rem;
-        margin-bottom: 0.25rem;
-        color: #1a1a2e;
-    }
-    
-    .exam-code {
-        color: #2e7d32;
-        font-size: 0.85rem;
+    .hero-badge {
+        display: inline-block;
+        background: #2e7d32;
+        color: white;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.8rem;
+        border-radius: 20px;
+        margin-bottom: 1rem;
         font-weight: 500;
-        margin-bottom: 0.75rem;
     }
     
-    .welcome-text p {
-        color: #6c757d;
-        margin-bottom: 1.25rem;
+    .hero-section h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #1a2a3a;
+    }
+    
+    .hero-section .exam-code {
+        color: #2e7d32;
         font-size: 0.9rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+    
+    .hero-section p {
+        color: #4a5568;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        max-width: 600px;
     }
     
     .stats-row {
         display: flex;
         gap: 2rem;
         margin-bottom: 1.5rem;
+        flex-wrap: wrap;
     }
     
-    .stat {
-        display: flex;
-        flex-direction: column;
+    .stat-card {
+        background: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        border: 1px solid #e9ecef;
     }
     
-    .stat-value {
-        font-size: 1.4rem;
-        font-weight: bold;
+    .stat-number {
+        font-size: 1.6rem;
+        font-weight: 700;
         color: #2e7d32;
     }
     
@@ -146,93 +86,114 @@
         flex-wrap: wrap;
     }
     
-    .btn-green {
+    .btn-primary {
         background: #2e7d32;
         color: white;
-        padding: 0.5rem 1.2rem;
-        border-radius: 30px;
+        padding: 0.6rem 1.5rem;
+        border-radius: 40px;
         text-decoration: none;
-        font-size: 0.85rem;
         font-weight: 500;
-        transition: background 0.2s;
+        transition: all 0.2s;
+        display: inline-block;
     }
     
-    .btn-green:hover {
+    .btn-primary:hover {
         background: #1b5e20;
-    }
-    
-    .btn-outline {
-        border: 1px solid #2e7d32;
-        color: #2e7d32;
-        padding: 0.5rem 1.2rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 500;
-        transition: all 0.2s;
-    }
-    
-    .btn-outline:hover {
-        background: #2e7d32;
-        color: white;
-    }
-    
-    .features-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .feature {
-        background: white;
-        border-radius: 16px;
-        padding: 1.2rem;
-        border: 1px solid #e9ecef;
-        transition: all 0.2s;
-    }
-    
-    .feature:hover {
-        border-color: #2e7d32;
         transform: translateY(-2px);
     }
     
+    .btn-secondary {
+        background: white;
+        border: 1px solid #2e7d32;
+        color: #2e7d32;
+        padding: 0.6rem 1.5rem;
+        border-radius: 40px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s;
+        display: inline-block;
+    }
+    
+    .btn-secondary:hover {
+        background: #2e7d32;
+        color: white;
+    }
+    
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .feature-card {
+        background: white;
+        border-radius: 20px;
+        padding: 1.2rem;
+        text-align: center;
+        transition: all 0.2s;
+        border: 1px solid #e9ecef;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-4px);
+        border-color: #2e7d32;
+        box-shadow: 0 8px 20px rgba(46,125,50,0.1);
+    }
+    
     .feature-icon {
-        font-size: 1.8rem;
+        font-size: 2rem;
         margin-bottom: 0.5rem;
     }
     
-    .feature h3 {
+    .feature-card h3 {
         font-size: 1rem;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.3rem;
+        color: #1a2a3a;
     }
     
-    .feature p {
-        font-size: 0.75rem;
+    .feature-card p {
+        font-size: 0.7rem;
         color: #6c757d;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.8rem;
     }
     
-    .feature a {
+    .feature-link {
         color: #2e7d32;
         text-decoration: none;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 500;
     }
     
-    .topics-list h2 {
-        font-size: 1.1rem;
+    /* Topics Section */
+    .topics-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
         margin-bottom: 1rem;
-        color: #1a1a2e;
+        flex-wrap: wrap;
+    }
+    
+    .topics-header h2 {
+        font-size: 1.2rem;
+        color: #1a2a3a;
+    }
+    
+    .topics-header a {
+        color: #2e7d32;
+        text-decoration: none;
+        font-size: 0.8rem;
     }
     
     .topics-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 0.6rem;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 0.8rem;
+        margin-bottom: 2rem;
     }
     
-    .topic-item {
+    .topic-card {
         background: white;
         border-radius: 12px;
         padding: 0.8rem 1rem;
@@ -244,42 +205,165 @@
         transition: all 0.2s;
     }
     
-    .topic-item:hover {
+    .topic-card:hover {
         border-color: #2e7d32;
-        background: #f8f9fa;
+        background: #f8faf8;
+        transform: translateX(4px);
     }
     
-    .topic-code {
-        font-size: 0.7rem;
-        color: #2e7d32;
-        font-weight: 600;
+    .topic-left {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .topic-number {
         background: #e8f5e9;
-        padding: 0.2rem 0.5rem;
+        color: #2e7d32;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.2rem 0.6rem;
         border-radius: 20px;
     }
     
-    .topic-title {
+    .topic-name {
         font-size: 0.85rem;
-        color: #1a1a2e;
-        flex: 1;
-        margin-left: 0.8rem;
+        font-weight: 500;
+        color: #1a2a3a;
     }
     
     .topic-arrow {
         color: #2e7d32;
-        font-size: 0.9rem;
+        font-size: 1rem;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, #1a2a3a 0%, #2d3e4e 100%);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .cta-section h3 {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .cta-section p {
+        color: #adb5bd;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-section .btn-primary {
+        background: white;
+        color: #1a2a3a;
+    }
+    
+    .cta-section .btn-primary:hover {
+        background: #e0e0e0;
+        transform: translateY(-2px);
     }
     
     @media (max-width: 768px) {
-        .features-row {
+        .features-grid {
             grid-template-columns: repeat(2, 1fr);
         }
-        .stats-row {
-            gap: 1rem;
-        }
-        .welcome-card {
+        .hero-section {
             padding: 1.5rem;
+        }
+        .hero-section h1 {
+            font-size: 1.5rem;
+        }
+        .topics-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>
+
+<div class="home-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-badge">Cambridge IGCSE</div>
+        <h1>IGCSE Chemistry 0620</h1>
+        <div class="exam-code">0620 & 0971</div>
+        <p>Master IGCSE Chemistry with ease! Join 50,000+ students already acing their exams with our expert-crafted resources.</p>
+        
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Happy Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Questions</div>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <a href="{% url 'revision_notes' %}" class="btn-primary">📖 Start Learning</a>
+            <a href="{% url 'exam_questions' %}" class="btn-secondary">📝 Practice Questions</a>
+        </div>
+    </div>
+    
+    <!-- Features Grid -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Revision Notes</h3>
+            <p>Concise, exam-aligned notes covering all topics</p>
+            <a href="{% url 'revision_notes' %}" class="feature-link">Explore Notes →</a>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3>Exam Questions</h3>
+            <p>Past paper questions with detailed mark schemes</p>
+            <a href="{% url 'exam_questions' %}" class="feature-link">Practice Now →</a>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📄</div>
+            <h3>Past Papers</h3>
+            <p>Full papers with mark schemes for timed practice</p>
+            <a href="{% url 'past_papers' %}" class="feature-link">Download Papers →</a>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎬</div>
+            <h3>Live Classes</h3>
+            <p>Interactive revision sessions with expert teachers</p>
+            <a href="{% url 'live_classes' %}" class="feature-link">Join Live →</a>
+        </div>
+    </div>
+    
+    <!-- Explore by Topic -->
+    <div class="topics-header">
+        <h2>🔬 Explore by Topic</h2>
+        <a href="{% url 'topics' %}">View all topics →</a>
+    </div>
+    
+    <div class="topics-grid">
+        {% for topic in topics %}
+        <a href="{% url 'topic_detail' topic.id %}" class="topic-card">
+            <div class="topic-left">
+                <span class="topic-number">Topic {{ topic.code }}</span>
+                <span class="topic-name">{{ topic.name }}</span>
+            </div>
+            <span class="topic-arrow">→</span>
+        </a>
+        {% endfor %}
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h3>Ready to ace your IGCSE Chemistry?</h3>
+        <p>Start your revision journey today - 100% free!</p>
+        <a href="{% url 'register' %}" class="btn-primary">Get Started Now →</a>
+    </div>
+</div>
 {% endblock %}
