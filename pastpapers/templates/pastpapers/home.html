@@ -21,273 +21,218 @@
 {% endblock %}
 
 {% block content %}
-<!-- Compact Hero Section -->
-<div class="hero-compact">
-    <div class="hero-content">
-        <div class="hero-text">
-            <span class="hero-badge">✨ Cambridge IGCSE 0620 & 0971</span>
-            <h1>🎓 Master IGCSE Chemistry<br>with Ease! 🧪</h1>
-            <p>Join 50,000+ students already acing their exams with our expert-crafted resources</p>
-            <div class="hero-buttons">
-                <a href="{% url 'revision_notes' %}" class="btn-primary">📖 Start Learning</a>
-                <a href="{% url 'exam_questions' %}" class="btn-secondary">📝 Practice Questions</a>
+<!-- Welcome Section -->
+<div class="welcome-card">
+    <div class="welcome-text">
+        <h1>Cambridge IGCSE Chemistry</h1>
+        <p class="exam-code">0620 & 0971</p>
+        <p>Your complete revision platform for IGCSE Chemistry. Free notes, practice questions, and past papers.</p>
+        <div class="stats-row">
+            <div class="stat">
+                <span class="stat-value">50K+</span>
+                <span class="stat-label">Students</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">500+</span>
+                <span class="stat-label">Questions</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">98%</span>
+                <span class="stat-label">Success Rate</span>
             </div>
         </div>
-        <div class="hero-stats">
-            <div class="stat-item">
-                <div class="stat-number">50K+</div>
-                <div class="stat-label">Happy Students</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Exam Success Rate</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Practice Questions</div>
-            </div>
+        <div class="button-group">
+            <a href="{% url 'revision_notes' %}" class="btn-green">📖 Start Learning</a>
+            <a href="{% url 'exam_questions' %}" class="btn-outline">📝 Practice</a>
         </div>
     </div>
 </div>
 
-<!-- Features Section -->
-<div class="features-section">
-    <div class="section-header">
-        <h2>📚 What We Offer</h2>
-        <p>Everything you need to ace your IGCSE Chemistry exams</p>
+<!-- Features Row -->
+<div class="features-row">
+    <div class="feature">
+        <div class="feature-icon">📝</div>
+        <h3>Revision Notes</h3>
+        <p>Concise notes covering all topics</p>
+        <a href="{% url 'revision_notes' %}">Browse →</a>
     </div>
-    <div class="features-grid">
-        <div class="feature-card-large">
-            <div class="feature-icon">📝</div>
-            <h3>Revision Notes</h3>
-            <p>Concise, exam-aligned notes covering all topics from the Cambridge syllabus</p>
-            <a href="{% url 'revision_notes' %}" class="feature-link">Explore Notes →</a>
-        </div>
-        <div class="feature-card-large">
-            <div class="feature-icon">📋</div>
-            <h3>Exam Questions</h3>
-            <p>Past paper questions organized by topic with detailed mark schemes</p>
-            <a href="{% url 'exam_questions' %}" class="feature-link">Practice Now →</a>
-        </div>
-        <div class="feature-card-large">
-            <div class="feature-icon">📄</div>
-            <h3>Past Papers</h3>
-            <p>Full past papers with mark schemes for timed practice</p>
-            <a href="{% url 'past_papers' %}" class="feature-link">Download Papers →</a>
-        </div>
-        <div class="feature-card-large">
-            <div class="feature-icon">🎬</div>
-            <h3>Live Classes</h3>
-            <p>Interactive revision sessions with expert teachers</p>
-            <a href="{% url 'live_classes' %}" class="feature-link">Join Live →</a>
-        </div>
+    <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h3>Exam Questions</h3>
+        <p>Past paper questions with answers</p>
+        <a href="{% url 'exam_questions' %}">Practice →</a>
+    </div>
+    <div class="feature">
+        <div class="feature-icon">📄</div>
+        <h3>Past Papers</h3>
+        <p>Full papers with mark schemes</p>
+        <a href="{% url 'past_papers' %}">Download →</a>
+    </div>
+    <div class="feature">
+        <div class="feature-icon">🎬</div>
+        <h3>Live Classes</h3>
+        <p>Interactive revision sessions</p>
+        <a href="{% url 'live_classes' %}">Join →</a>
     </div>
 </div>
 
-<!-- Topics Preview Section -->
-<div class="topics-section">
-    <div class="section-header">
-        <h2>🔬 Explore by Topic</h2>
-        <p>Complete coverage of all 11 syllabus topics</p>
-    </div>
+<!-- Topics List -->
+<div class="topics-list">
+    <h2>All Topics</h2>
     <div class="topics-grid">
         {% for topic in topics %}
-        <a href="{% url 'topic_detail' topic.id %}" class="topic-card-large">
-            <div class="topic-number">Topic {{ topic.code }}</div>
-            <div class="topic-name">{{ topic.name }}</div>
-            <div class="topic-stats">
-                <span>📚 {{ topic.subtopics.count }} subtopics</span>
-                <span>📝 {{ topic.question_count }} questions</span>
-            </div>
-            <div class="topic-arrow">→</div>
+        <a href="{% url 'topic_detail' topic.id %}" class="topic-item">
+            <span class="topic-code">Topic {{ topic.code }}</span>
+            <span class="topic-title">{{ topic.name }}</span>
+            <span class="topic-arrow">→</span>
         </a>
         {% endfor %}
     </div>
 </div>
 
-<!-- Call to Action -->
-<div class="cta-section">
-    <div class="cta-content">
-        <h3>Ready to ace your IGCSE Chemistry?</h3>
-        <p>Start your revision journey today - 100% free!</p>
-        <a href="{% url 'register' %}" class="btn-primary">Get Started Now →</a>
-    </div>
-</div>
-
 <style>
-    .hero-compact {
-        background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
-        border-radius: 24px;
+    .welcome-card {
+        background: white;
+        border-radius: 20px;
         padding: 2rem;
         margin-bottom: 2rem;
-        position: relative;
-        overflow: hidden;
+        border: 1px solid #e9ecef;
     }
     
-    .hero-compact::before {
-        content: "🧪";
-        font-size: 120px;
-        position: absolute;
-        right: -20px;
-        bottom: -20px;
-        opacity: 0.1;
-        pointer-events: none;
+    .welcome-text h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.25rem;
+        color: #1a1a2e;
     }
     
-    .hero-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        position: relative;
-        z-index: 1;
+    .exam-code {
+        color: #2e7d32;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
     }
     
-    .hero-text {
-        flex: 1;
-    }
-    
-    .hero-badge {
-        display: inline-block;
-        background: rgba(255,255,255,0.2);
-        padding: 0.2rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.7rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .hero-text h1 {
-        font-size: 1.8rem;
-        margin-bottom: 0.8rem;
-        line-height: 1.2;
-    }
-    
-    .hero-text p {
+    .welcome-text p {
+        color: #6c757d;
+        margin-bottom: 1.25rem;
         font-size: 0.9rem;
-        opacity: 0.9;
-        margin-bottom: 1.2rem;
     }
     
-    .hero-buttons {
+    .stats-row {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .stat {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .stat-value {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #2e7d32;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+        color: #6c757d;
+    }
+    
+    .button-group {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
     }
     
-    .btn-primary {
-        background: white;
-        color: #2e7d32;
-        padding: 0.6rem 1.2rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.85rem;
-        transition: transform 0.2s;
-        display: inline-block;
-    }
-    
-    .btn-primary:hover {
-        transform: translateY(-2px);
-    }
-    
-    .btn-secondary {
-        background: transparent;
-        border: 2px solid white;
+    .btn-green {
+        background: #2e7d32;
         color: white;
-        padding: 0.6rem 1.2rem;
+        padding: 0.5rem 1.2rem;
         border-radius: 30px;
         text-decoration: none;
-        font-weight: 600;
         font-size: 0.85rem;
+        font-weight: 500;
+        transition: background 0.2s;
+    }
+    
+    .btn-green:hover {
+        background: #1b5e20;
+    }
+    
+    .btn-outline {
+        border: 1px solid #2e7d32;
+        color: #2e7d32;
+        padding: 0.5rem 1.2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
         transition: all 0.2s;
     }
     
-    .btn-secondary:hover {
-        background: white;
-        color: #2e7d32;
+    .btn-outline:hover {
+        background: #2e7d32;
+        color: white;
     }
     
-    .hero-stats {
-        display: flex;
-        gap: 2rem;
-        background: rgba(255,255,255,0.1);
-        padding: 1rem 1.5rem;
-        border-radius: 20px;
-    }
-    
-    .stat-item {
-        text-align: center;
-    }
-    
-    .stat-number {
-        font-size: 1.4rem;
-        font-weight: bold;
-    }
-    
-    .stat-label {
-        font-size: 0.7rem;
-        opacity: 0.8;
-    }
-    
-    .features-section {
+    .features-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
         margin-bottom: 2rem;
     }
     
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1.2rem;
-    }
-    
-    .feature-card-large {
+    .feature {
         background: white;
         border-radius: 16px;
         padding: 1.2rem;
-        transition: all 0.2s;
         border: 1px solid #e9ecef;
+        transition: all 0.2s;
     }
     
-    .feature-card-large:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    .feature:hover {
         border-color: #2e7d32;
+        transform: translateY(-2px);
     }
     
-    .feature-card-large .feature-icon {
-        font-size: 2rem;
-        margin-bottom: 0.8rem;
+    .feature-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
     }
     
-    .feature-card-large h3 {
+    .feature h3 {
         font-size: 1rem;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.25rem;
     }
     
-    .feature-card-large p {
-        font-size: 0.8rem;
+    .feature p {
+        font-size: 0.75rem;
         color: #6c757d;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.75rem;
     }
     
-    .feature-link {
+    .feature a {
         color: #2e7d32;
         text-decoration: none;
         font-size: 0.8rem;
         font-weight: 500;
     }
     
-    .topics-section {
-        margin-bottom: 2rem;
+    .topics-list h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #1a1a2e;
     }
     
     .topics-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 0.8rem;
+        gap: 0.6rem;
     }
     
-    .topic-card-large {
+    .topic-item {
         background: white;
         border-radius: 12px;
         padding: 0.8rem 1rem;
@@ -299,80 +244,41 @@
         transition: all 0.2s;
     }
     
-    .topic-card-large:hover {
+    .topic-item:hover {
         border-color: #2e7d32;
-        transform: translateX(4px);
+        background: #f8f9fa;
     }
     
-    .topic-number {
+    .topic-code {
         font-size: 0.7rem;
         color: #2e7d32;
         font-weight: 600;
+        background: #e8f5e9;
+        padding: 0.2rem 0.5rem;
+        border-radius: 20px;
     }
     
-    .topic-name {
-        font-size: 0.9rem;
-        font-weight: 500;
+    .topic-title {
+        font-size: 0.85rem;
         color: #1a1a2e;
-    }
-    
-    .topic-stats {
-        font-size: 0.65rem;
-        color: #6c757d;
-        display: flex;
-        gap: 0.5rem;
+        flex: 1;
+        margin-left: 0.8rem;
     }
     
     .topic-arrow {
         color: #2e7d32;
-        font-size: 1rem;
-    }
-    
-    .cta-section {
-        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-        border-radius: 20px;
-        padding: 2rem;
-        text-align: center;
-    }
-    
-    .cta-content h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-        color: #1b5e20;
-    }
-    
-    .cta-content p {
-        color: #2e7d32;
-        margin-bottom: 1rem;
-    }
-    
-    .section-header {
-        margin-bottom: 1rem;
-    }
-    
-    .section-header h2 {
-        font-size: 1.2rem;
-        margin-bottom: 0.2rem;
-    }
-    
-    .section-header p {
-        font-size: 0.8rem;
-        color: #6c757d;
+        font-size: 0.9rem;
     }
     
     @media (max-width: 768px) {
-        .hero-content {
-            flex-direction: column;
-            text-align: center;
+        .features-row {
+            grid-template-columns: repeat(2, 1fr);
         }
-        .hero-stats {
-            justify-content: center;
+        .stats-row {
+            gap: 1rem;
         }
-        .hero-buttons {
-            justify-content: center;
-        }
-        .topics-grid {
-            grid-template-columns: 1fr;
+        .welcome-card {
+            padding: 1.5rem;
         }
     }
 </style>
