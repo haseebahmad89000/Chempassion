@@ -7,6 +7,7 @@ urlpatterns = [
     path('topics/', views.topics_list, name='topics'),
     path('topic/<int:topic_id>/', views.topic_detail, name='topic_detail'),
     path('topic/<int:topic_id>/practice/', views.topic_practice, name='topic_practice'),
+    path('subtopic/<int:subtopic_id>/', views.subtopic_detail, name='subtopic_detail'),
     path('subtopic/<int:subtopic_id>/practice/', views.subtopic_practice, name='subtopic_practice'),
     
     # Revision and Study

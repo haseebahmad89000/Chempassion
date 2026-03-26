@@ -1,0 +1,232 @@
+{% extends 'pastpapers/base.html' %}
+
+{% block title %}{{ subtopic.name }}{% endblock %}
+
+{% block content %}
+<style>
+    .subtopic-header {
+        margin-bottom: 2rem;
+    }
+    
+    .subtopic-header h1 {
+        font-size: 1.5rem;
+        color: #1E3A8A;
+        margin-bottom: 0.25rem;
+    }
+    
+    .topic-breadcrumb {
+        color: #10B981;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .topic-breadcrumb a {
+        color: #10B981;
+        text-decoration: none;
+    }
+    
+    .topic-breadcrumb a:hover {
+        text-decoration: underline;
+    }
+    
+    .exam-code {
+        color: #6B7280;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .notes-meta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+        padding: 0.75rem;
+        background: #F9FAFB;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        color: #6B7280;
+    }
+    
+    .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #10B981;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin: 1rem 0;
+        transition: all 0.2s;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .download-btn:hover {
+        background: #059669;
+        transform: translateY(-2px);
+    }
+    
+    .notes-content {
+        background: white;
+        border-radius: 16px;
+        padding: 1.5rem;
+        border: 1px solid #E5E7EB;
+        margin: 1rem 0;
+        line-height: 1.6;
+    }
+    
+    .notes-content h2 {
+        color: #1E3A8A;
+        margin: 1rem 0 0.5rem;
+        font-size: 1.2rem;
+    }
+    
+    .notes-content h3 {
+        color: #10B981;
+        margin: 0.8rem 0 0.4rem;
+        font-size: 1rem;
+    }
+    
+    .notes-content ul, .notes-content ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .notes-content p {
+        margin-bottom: 0.8rem;
+    }
+    
+    .notes-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    
+    .notes-content th {
+        background: #1E3A8A;
+        color: white;
+        padding: 8px;
+        text-align: left;
+    }
+    
+    .notes-content td {
+        border: 1px solid #E5E7EB;
+        padding: 8px;
+    }
+    
+    .notes-content tr:nth-child(even) {
+        background: #F9FAFB;
+    }
+    
+    .notes-content .key-point {
+        background: #F0FDF4;
+        border-left: 4px solid #10B981;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+    
+    .author-info {
+        font-size: 0.7rem;
+        color: #6B7280;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #E5E7EB;
+    }
+    
+    .feedback-section {
+        margin-top: 2rem;
+        padding: 1rem;
+        background: #F9FAFB;
+        border-radius: 12px;
+        text-align: center;
+    }
+    
+    .feedback-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    .feedback-btn {
+        background: white;
+        border: 1px solid #E5E7EB;
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .feedback-btn:hover {
+        border-color: #10B981;
+        color: #10B981;
+    }
+</style>
+
+<div class="subtopic-header">
+    <div class="topic-breadcrumb">
+        <a href="{% url 'topic_detail' topic.id %}">Topic {{ topic.code }}: {{ topic.name }}</a> / {{ subtopic.name }}
+    </div>
+    <h1>{{ subtopic.name }}</h1>
+    <div class="exam-code">Cambridge (CIE) IGCSE Chemistry Revision Notes</div>
+    <div class="notes-meta">
+        <span>📚 Part of Topic {{ topic.code }}</span>
+        <span>📝 Exam code: 0620 & 0971</span>
+    </div>
+    <button class="download-btn" id="downloadNotesBtn">📥 Download notes on {{ subtopic.name }}</button>
+</div>
+
+<div class="notes-content">
+    {% if content %}
+        {{ content|safe }}
+    {% else %}
+        <div style="text-align: center; padding: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+            <h3>Notes Coming Soon!</h3>
+            <p>We're preparing high-quality revision notes for {{ subtopic.name }}.</p>
+            <p style="font-size: 0.8rem; color: #6B7280;">Check back soon for detailed explanations and examples.</p>
+        </div>
+    {% endif %}
+</div>
+
+<div class="feedback-section">
+    <p>❓ Did this page help you?</p>
+    <div class="feedback-buttons">
+        <button class="feedback-btn" onclick="feedback('yes')">👍 Yes</button>
+        <button class="feedback-btn" onclick="feedback('no')">👎 No</button>
+    </div>
+    <div class="author-info">
+        <p>Written by: ChemPassion Team | Reviewed by: IGCSE Chemistry Examiners</p>
+        <p>Updated on: March 2026</p>
+    </div>
+</div>
+
+<script>
+function feedback(response) {
+    if (response === 'yes') {
+        alert('Thank you! Glad it helped 😊');
+    } else {
+        alert('Thank you for your feedback! We\'ll work on improving this page.');
+    }
+}
+
+// Download notes functionality
+document.getElementById('downloadNotesBtn')?.addEventListener('click', function() {
+    // Create a text version of the notes
+    const content = document.querySelector('.notes-content').innerText;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '{{ subtopic.name }}.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+});
+</script>
+{% endblock %}

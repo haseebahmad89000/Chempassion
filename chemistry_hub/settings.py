@@ -52,11 +52,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pastpapers.context_processors.topics_processor',  # Add this line
             ],
         },
     },
 ]
-
 WSGI_APPLICATION = 'chemistry_hub.wsgi.application'
 
 DATABASES = {

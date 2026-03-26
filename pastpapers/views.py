@@ -75,6 +75,25 @@ def revision_notes(request):
     }
     return render(request, 'pastpapers/revision_notes.html', context)
 
+def subtopic_detail(request, subtopic_id):
+    """Display detailed notes for a specific subtopic"""
+    subtopic = get_object_or_404(Subtopic, id=subtopic_id)
+    topic = subtopic.topic
+    
+    # Get notes for the parent topic
+    try:
+        note = TopicNote.objects.get(topic=topic)
+        content = note.content
+    except TopicNote.DoesNotExist:
+        content = f"<h2>Notes for {subtopic.name}</h2><p>Coming soon! Check back later for detailed revision notes.</p>"
+    
+    context = {
+        'subtopic': subtopic,
+        'topic': topic,
+        'content': content,
+    }
+    return render(request, 'pastpapers/subtopic_detail.html', context)
+
 def flashcards(request):
     topics = Topic.objects.all().order_by('order')
     return render(request, 'pastpapers/flashcards.html', {'topics': topics})
