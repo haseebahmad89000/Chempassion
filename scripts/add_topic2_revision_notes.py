@@ -44,16 +44,16 @@ content = """
 .key-definition {
     background: #FEF3C7;
     border-left: 4px solid #F59E0B;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 8px;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
 }
 .warning-box {
     background: #FEE2E2;
     border-left: 4px solid #EF4444;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 8px;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
 }
 table {
     width: 100%;
@@ -67,7 +67,7 @@ th {
     text-align: left;
 }
 td {
-    border: 1px solid #E5E7EB;
+    border: 1px solid #ddd;
     padding: 8px 10px;
 }
 tr:nth-child(even) {
@@ -79,8 +79,8 @@ pre {
     padding: 1rem;
     border-radius: 8px;
     overflow-x: auto;
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
+    font-family: monospace;
+    font-size: 0.8rem;
 }
 </style>
 
@@ -95,17 +95,13 @@ pre {
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            表
-                <tr style="background:#1E3A8A; color:white;"><th>Type</th><th>Definition</th><th>Example</th><th>Can it be separated?</th></tr>
-                <tr><td><strong>Element</strong></td><td>A pure substance made of only one type of atom</td><td>Oxygen (O₂), Iron (Fe), Gold (Au)</td><td>Cannot be broken down chemically</td></tr>
-                <tr style="background:#F9FAFB;"><td><strong>Compound</strong></td><td>Two or more elements chemically bonded together</td><td>Water (H₂O), Carbon dioxide (CO₂), Sodium chloride (NaCl)</td><td>Cannot be separated by physical means; needs chemical reaction</td></tr>
-                <tr><td><strong>Mixture</strong></td><td>Two or more substances physically combined, not chemically bonded</td><td>Air, salt water, sand and iron filings</td><td>Can be separated by physical methods (filtration, evaporation, etc.)</td></tr>
-            表
-            <pre>
-ELEMENT          COMPOUND           MIXTURE
-● ● ● ●          ●─● ●─●            ● ●   ●─●
-● ● ● ●          ●─● ●─●            ●─●   ● ●
-(All same)      (Atoms bonded)     (Not bonded)</pre>
+            <table>
+                <tr style="background:#1E3A8A; color:white;"><th>Type</th><th>Definition</th><th>Example</th><th>Separation</th></tr>
+                <tr><td><strong>Element</strong></td><td>Pure substance made of only one type of atom</td><td>O₂, Fe, Au</td><td>Cannot be broken down</td></tr>
+                <tr style="background:#F9FAFB;"><td><strong>Compound</strong></td><td>Two or more elements chemically bonded</td><td>H₂O, CO₂, NaCl</td><td>Only by chemical reaction</td></tr>
+                <tr><td><strong>Mixture</strong></td><td>Substances physically combined, not bonded</td><td>Air, salt water</td><td>Physical methods (filtration, evaporation)</td></tr>
+            </table>
+            <div class="key-definition">💡 <strong>Key Point:</strong> Elements cannot be split into simpler substances. Compounds have fixed ratios. Mixtures have variable composition.</div>
         </div>
     </div>
 </div>
@@ -121,7 +117,7 @@ ELEMENT          COMPOUND           MIXTURE
         <div class="answer-content">
             <p><strong>Atomic Structure:</strong></p>
             <ul>
-                <li><strong>Nucleus</strong> (centre): Contains protons (+) and neutrons (neutral)</li>
+                <li><strong>Nucleus</strong> (centre): Contains <strong>protons</strong> (+) and <strong>neutrons</strong> (neutral)</li>
                 <li><strong>Electron shells</strong>: Electrons (-) orbit the nucleus in energy levels (shells)</li>
             </ul>
             <pre>
@@ -143,12 +139,12 @@ ELEMENT          COMPOUND           MIXTURE
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            表
+            <table>
                 <tr style="background:#1E3A8A; color:white;"><th>Particle</th><th>Relative Charge</th><th>Relative Mass</th><th>Location</th></tr>
                 <tr><td>Proton</td><td>+1</td><td>1</td><td>Nucleus</td></tr>
                 <tr style="background:#F9FAFB;"><td>Neutron</td><td>0</td><td>1</td><td>Nucleus</td></tr>
                 <tr><td>Electron</td><td>-1</td><td>1/1840 (negligible)</td><td>Electron shells</td></tr>
-            表
+            </table>
         </div>
     </div>
 </div>
@@ -162,9 +158,7 @@ ELEMENT          COMPOUND           MIXTURE
         <div class="answer-content">
             <p><strong>Atomic Number (Z)</strong> = Number of protons in the nucleus</p>
             <p>In a neutral atom, the number of protons = number of electrons</p>
-            <div class="key-definition">
-                💡 Example: Carbon has atomic number 6 → 6 protons, 6 electrons
-            </div>
+            <div class="key-definition">💡 Example: Carbon has atomic number 6 → 6 protons, 6 electrons</div>
         </div>
     </div>
 </div>
@@ -178,9 +172,7 @@ ELEMENT          COMPOUND           MIXTURE
         <div class="answer-content">
             <p><strong>Mass Number (A)</strong> = Number of protons + number of neutrons</p>
             <p><strong>Number of neutrons</strong> = Mass number - Atomic number</p>
-            <div class="key-definition">
-                💡 Example: Carbon-12 has mass number 12, atomic number 6 → 12 - 6 = 6 neutrons
-            </div>
+            <div class="key-definition">💡 Example: Carbon-12 → 12 - 6 = 6 neutrons</div>
         </div>
     </div>
 </div>
@@ -192,7 +184,7 @@ ELEMENT          COMPOUND           MIXTURE
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            表
+            <table>
                 <tr style="background:#1E3A8A; color:white;"><th>Element</th><th>Atomic Number</th><th>Electronic Configuration</th></tr>
                 <tr><td>Hydrogen</td><td>1</td><td>1</td></tr>
                 <tr style="background:#F9FAFB;"><td>Helium</td><td>2</td><td>2</td></tr>
@@ -214,17 +206,15 @@ ELEMENT          COMPOUND           MIXTURE
                 <tr style="background:#F9FAFB;"><td>Argon</td><td>18</td><td>2,8,8</td></tr>
                 <tr><td>Potassium</td><td>19</td><td>2,8,8,1</td></tr>
                 <tr style="background:#F9FAFB;"><td>Calcium</td><td>20</td><td>2,8,8,2</td></tr>
-            表
-            <div class="key-definition">
-                💡 <strong>Shell Rules:</strong> 1st shell = max 2 electrons, 2nd shell = max 8 electrons, 3rd shell = max 8 electrons (simplified model)
-            </div>
+            </table>
+            <div class="key-definition">💡 <strong>Shell Rules:</strong> 1st shell = max 2 electrons, 2nd shell = max 8 electrons, 3rd shell = max 8 electrons (simplified model)</div>
         </div>
     </div>
 </div>
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">6</span> State that: (a) Group VIII noble gases have a full outer electron shell; (b) the number of outer shell electrons equals the group number in Groups I to VII; (c) the number of occupied electron shells equals the period number</span>
+        <span><span class="point-number">6</span> State that Group VIII noble gases have a full outer electron shell; the number of outer shell electrons equals the group number; the number of occupied electron shells equals the period number</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -235,9 +225,7 @@ ELEMENT          COMPOUND           MIXTURE
                 <li><strong>Group number (I-VII)</strong> = Number of electrons in the outer shell</li>
                 <li><strong>Group VIII (Noble gases)</strong> = Full outer shell (stable, unreactive)</li>
             </ul>
-            <div class="key-definition">
-                💡 Example: Sodium (Period 3, Group 1) → 3 shells, 1 outer electron → 2,8,1
-            </div>
+            <div class="key-definition">💡 Example: Sodium (Period 3, Group 1) → 3 shells, 1 outer electron → 2,8,1</div>
         </div>
     </div>
 </div>
@@ -253,10 +241,8 @@ ELEMENT          COMPOUND           MIXTURE
         <div class="answer-content">
             <p><strong>Definition:</strong> Isotopes are atoms of the same element with the <strong>same number of protons</strong> but <strong>different numbers of neutrons</strong>.</p>
             <p><strong>Example: Chlorine</strong></p>
-            <ul>
-                <li>Chlorine-35: 17 protons, 18 neutrons</li>
-                <li>Chlorine-37: 17 protons, 20 neutrons</li>
-            </ul>
+            <ul><li>Chlorine-35: 17 protons, 18 neutrons</li><li>Chlorine-37: 17 protons, 20 neutrons</li></ul>
+            <div class="key-definition">💡 Isotopes have the same chemical properties (same electrons) but different physical properties (different mass).</div>
         </div>
     </div>
 </div>
@@ -268,54 +254,36 @@ ELEMENT          COMPOUND           MIXTURE
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Atomic Notation:</strong> \(^{A}_{Z}X\) where:</p>
-            <ul>
-                <li>A = Mass number (protons + neutrons)</li>
-                <li>Z = Atomic number (protons)</li>
-                <li>X = Element symbol</li>
-            </ul>
-            <div class="key-definition">
-                💡 Example: \(^{12}_{6}C\) = Carbon-12 (6 protons, 6 neutrons)
-            </div>
+            <p><strong>Atomic Notation:</strong> ¹²₆C</p>
+            <ul><li>Top number (12) = Mass number (protons + neutrons)</li><li>Bottom number (6) = Atomic number (protons)</li></ul>
+            <div class="key-definition">💡 Example: ³⁵₁₇Cl⁻ means a chloride ion with 17 protons, 18 neutrons, 18 electrons</div>
         </div>
     </div>
 </div>
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">3</span> State that isotopes of the same element have the same chemical properties because they have the same number of electrons and therefore the same electronic configuration <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">3</span> State that isotopes have the same chemical properties because they have the same number of electrons <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Why Same Chemical Properties?</strong></p>
-            <ul>
-                <li>Chemical properties depend on <strong>electron configuration</strong></li>
-                <li>All isotopes of an element have the same number of electrons</li>
-                <li>Therefore, they react the same way chemically</li>
-            </ul>
-            <p><strong>Why Different Physical Properties?</strong></p>
-            <ul>
-                <li>Different mass affects physical properties like density, boiling point, and rate of diffusion</li>
-            </ul>
+            <p><strong>Why Same Chemical Properties?</strong> Chemical properties depend on <strong>electron configuration</strong>. All isotopes of an element have the same number of electrons, so they react the same way chemically.</p>
+            <p><strong>Why Different Physical Properties?</strong> Different mass affects physical properties like density, boiling point, and rate of diffusion.</p>
         </div>
     </div>
 </div>
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">4</span> Calculate the relative atomic mass of an element from the relative masses and abundances of its isotopes <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">4</span> Calculate the relative atomic mass from isotopic abundances <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Formula:</strong></p>
-            <p>Aᵣ = ( % of isotope A × mass of A ) + ( % of isotope B × mass of B ) / 100</p>
+            <p><strong>Formula:</strong> Aᵣ = ( % of isotope A × mass A ) + ( % of isotope B × mass B ) / 100</p>
             <p><strong>Worked Example: Chlorine</strong></p>
-            <ul>
-                <li>Chlorine-35: 75% abundance</li>
-                <li>Chlorine-37: 25% abundance</li>
-            </ul>
+            <ul><li>Chlorine-35: 75% abundance</li><li>Chlorine-37: 25% abundance</li></ul>
             <p>Aᵣ = (75 × 35) + (25 × 37) / 100 = (2625 + 925) / 100 = 3550 / 100 = <strong>35.5</strong></p>
         </div>
     </div>
@@ -330,10 +298,11 @@ ELEMENT          COMPOUND           MIXTURE
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Cations (positive ions):</strong> Metals lose electrons to achieve a full outer shell</p>
-            <ul><li>Example: Na → Na⁺ + e⁻ (sodium atom loses 1 electron)</li></ul>
-            <p><strong>Anions (negative ions):</strong> Non-metals gain electrons to achieve a full outer shell</p>
-            <ul><li>Example: Cl + e⁻ → Cl⁻ (chlorine atom gains 1 electron)</li></ul>
+            <p><strong>Cations (positive ions):</strong> Metals <strong>lose electrons</strong> to achieve a full outer shell</p>
+            <ul><li>Example: Na → Na⁺ + e⁻ (sodium loses 1 electron)</li></ul>
+            <p><strong>Anions (negative ions):</strong> Non-metals <strong>gain electrons</strong> to achieve a full outer shell</p>
+            <ul><li>Example: Cl + e⁻ → Cl⁻ (chlorine gains 1 electron)</li></ul>
+            <div class="key-definition">💡 Group 1 metals form 1⁺ ions, Group 2 form 2⁺, Group 6 form 2⁻, Group 7 form 1⁻</div>
         </div>
     </div>
 </div>
@@ -353,7 +322,7 @@ ELEMENT          COMPOUND           MIXTURE
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">3</span> Describe the formation of ionic bonds between elements from Group I and Group VII, using dot-and-cross diagrams</span>
+        <span><span class="point-number">3</span> Describe the formation of ionic bonds between Group I and Group VII using dot-and-cross diagrams</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -367,46 +336,37 @@ Na⁺ ion: 2,8           Cl⁻ ion: 2,8,8
 [Na]⁺   [ Cl ]⁻
         ••
         ••</pre>
-            <div class="key-definition">
-                💡 Group I metals lose 1 electron → +1 charge<br>
-                Group VII non-metals gain 1 electron → -1 charge
-            </div>
+            <div class="key-definition">💡 Group I metals lose 1 electron → +1 charge. Group VII non-metals gain 1 electron → -1 charge.</div>
         </div>
     </div>
 </div>
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">4</span> Describe the properties of ionic compounds: high melting/boiling points; good electrical conductivity when aqueous or molten, poor when solid</span>
+        <span><span class="point-number">4</span> Describe the properties of ionic compounds: high melting/boiling points; good conductivity when aqueous or molten, poor when solid</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Properties of Ionic Compounds:</strong></p>
-            表
+            <table>
                 <tr style="background:#1E3A8A; color:white;"><th>Property</th><th>Explanation</th></tr>
                 <tr><td>High melting/boiling points</td><td>Strong electrostatic forces between ions require lots of energy to overcome</td></tr>
-                <tr style="background:#F9FAFB;"><td>Conducts electricity when molten or dissolved</td><td>Ions are free to move and carry charge</td></tr>
+                <tr style="background:#F9FAFB;"><td>Conducts when molten/dissolved</td><td>Ions are free to move and carry charge</td></tr>
                 <tr><td>Poor conductor when solid</td><td>Ions are fixed in position in the lattice</td></tr>
-                <tr style="background:#F9FAFB;"><td>Hard but brittle</td><td>Layers of ions can shift, causing like charges to align and repel</td></tr>
-            表
+                <tr style="background:#F9FAFB;"><td>Hard but brittle</td><td>Layers shift, like charges align and repel</td></tr>
+            </table>
         </div>
     </div>
 </div>
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">5</span> Describe the giant lattice structure of ionic compounds as a regular arrangement of alternating positive and negative ions <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">5</span> Describe the giant lattice structure of ionic compounds <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Giant Lattice Structure:</strong></p>
-            <ul>
-                <li>Ions are arranged in a regular, repeating 3D pattern</li>
-                <li>Alternating positive and negative ions</li>
-                <li>Example: NaCl lattice (cubic structure)</li>
-            </ul>
+            <p><strong>Giant Lattice Structure:</strong> Ions are arranged in a regular, repeating 3D pattern with alternating positive and negative ions.</p>
             <pre>
     +   -   +   -
    -   +   -   +
@@ -419,15 +379,17 @@ Na⁺ ion: 2,8           Cl⁻ ion: 2,8,8
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">6</span> Explain in terms of structure and bonding the properties of ionic compounds <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">6</span> Explain the properties of ionic compounds in terms of structure and bonding <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>High melting/boiling points:</strong> Strong electrostatic forces between oppositely charged ions in all directions require large amounts of energy to overcome.</p>
-            <p><strong>Conductivity when molten/dissolved:</strong> Ions become free to move and can carry electric charge.</p>
-            <p><strong>No conductivity when solid:</strong> Ions are fixed in lattice positions and cannot move.</p>
-            <p><strong>Brittleness:</strong> When layers shift, like charges align and repel, causing the crystal to split.</p>
+            <ul>
+                <li><strong>High melting/boiling points:</strong> Strong electrostatic forces between oppositely charged ions in all directions require large amounts of energy to overcome.</li>
+                <li><strong>Conductivity when molten/dissolved:</strong> Ions become free to move and can carry electric charge.</li>
+                <li><strong>No conductivity when solid:</strong> Ions are fixed in lattice positions and cannot move.</li>
+                <li><strong>Brittleness:</strong> When layers shift, like charges align and repel, causing the crystal to split.</li>
+            </ul>
         </div>
     </div>
 </div>
@@ -436,7 +398,7 @@ Na⁺ ion: 2,8           Cl⁻ ion: 2,8,8
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">1</span> State that a covalent bond is formed when a pair of electrons is shared between two atoms leading to noble gas electronic configurations</span>
+        <span><span class="point-number">1</span> State that a covalent bond is formed when a pair of electrons is shared between two atoms</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -449,7 +411,7 @@ Na⁺ ion: 2,8           Cl⁻ ion: 2,8,8
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">2</span> Describe the formation of covalent bonds in simple molecules (H₂, Cl₂, H₂O, CH₄, NH₃, HCl) using dot-and-cross diagrams</span>
+        <span><span class="point-number">2</span> Describe the formation of covalent bonds in simple molecules using dot-and-cross diagrams</span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -461,9 +423,7 @@ H₂O:     H:O:H (O shares 2 pairs)
 CH₄:     H:C:H with H above and below (C shares 4 pairs)
 NH₃:     H:N:H with lone pair on N (N shares 3 pairs)
 HCl:     H:Cl (H shares 1 pair)</pre>
-            <div class="key-definition">
-                💡 <strong>Note:</strong> Only outer shell electrons are shown in dot-and-cross diagrams.
-            </div>
+            <div class="key-definition">💡 Only outer shell electrons are shown in dot-and-cross diagrams.</div>
         </div>
     </div>
 </div>
@@ -475,25 +435,23 @@ HCl:     H:Cl (H shares 1 pair)</pre>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Properties of Simple Molecular Compounds:</strong></p>
-            表
+            <table>
                 <tr style="background:#1E3A8A; color:white;"><th>Property</th><th>Explanation</th></tr>
                 <tr><td>Low melting/boiling points</td><td>Weak intermolecular forces between molecules (not the strong covalent bonds inside molecules)</td></tr>
                 <tr style="background:#F9FAFB;"><td>Poor electrical conductivity</td><td>No free electrons or ions to carry charge</td></tr>
                 <tr><td>Often gases or liquids at room temperature</td><td>Weak forces mean they evaporate easily</td></tr>
-            表
+            </table>
         </div>
     </div>
 </div>
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">4</span> Describe the formation of covalent bonds in simple molecules (CH₃OH, C₂H₄, O₂, CO₂, N₂) using dot-and-cross diagrams <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">4</span> Describe the formation of covalent bonds in additional molecules (O₂, N₂, CO₂, C₂H₄, CH₃OH) <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Additional Molecules:</strong></p>
             <pre>
 O₂:      O::O (double bond)
 N₂:      N:::N (triple bond)
@@ -510,7 +468,7 @@ CH₃OH:   H
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">5</span> Explain in terms of structure and bonding the properties of simple molecular compounds: low melting/boiling points due to weak intermolecular forces; poor electrical conductivity <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">5</span> Explain the properties of simple molecular compounds in terms of structure and bonding <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -519,7 +477,7 @@ CH₃OH:   H
             <ul>
                 <li><strong>Intramolecular forces</strong> (covalent bonds) = strong, hold atoms together within a molecule</li>
                 <li><strong>Intermolecular forces</strong> = weak, hold molecules together</li>
-                <li>Low melting/boiling points occur because only weak intermolecular forces need to be overcome</li>
+                <li>Low melting/boiling points because only weak intermolecular forces need to be overcome</li>
                 <li>Poor conductivity because no free electrons or ions are present</li>
             </ul>
         </div>
@@ -535,10 +493,8 @@ CH₃OH:   H
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            <p><strong>Diamond:</strong></p>
-            <ul><li>Each carbon atom bonded to 4 others (tetrahedral)</li><li>All strong covalent bonds</li></ul>
-            <p><strong>Graphite:</strong></p>
-            <ul><li>Each carbon bonded to 3 others, forming layers of hexagons</li><li>Strong covalent bonds within layers; weak intermolecular forces between layers</li><li>One free electron per carbon atom becomes delocalised</li></ul>
+            <p><strong>Diamond:</strong> Each carbon atom bonded to 4 others (tetrahedral) - all strong covalent bonds</p>
+            <p><strong>Graphite:</strong> Each carbon bonded to 3 others, forming layers of hexagons. Strong covalent bonds within layers; weak intermolecular forces between layers. One free electron per carbon atom becomes delocalised.</p>
         </div>
     </div>
 </div>
@@ -550,14 +506,14 @@ CH₃OH:   H
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            表
+            <table>
                 <tr style="background:#1E3A8A; color:white;"><th>Property</th><th>Diamond</th><th>Graphite</th></tr>
                 <tr><td>Bonding</td><td>4 covalent bonds per carbon</td><td>3 covalent bonds per carbon</td></tr>
                 <tr style="background:#F9FAFB;"><td>Structure</td><td>3D tetrahedral</td><td>Layered hexagonal</td></tr>
                 <tr><td>Hardness</td><td>Very hard (hardest natural substance)</td><td>Soft, slippery</td></tr>
                 <tr style="background:#F9FAFB;"><td>Conductivity</td><td>Non-conductor (no free electrons)</td><td>Conductor (delocalised electrons)</td></tr>
                 <tr><td>Uses</td><td>Cutting tools, drills, jewellery</td><td>Pencil lead, lubricant, electrodes</td></tr>
-            表
+            </table>
         </div>
     </div>
 </div>
@@ -566,7 +522,7 @@ CH₃OH:   H
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">1</span> Describe metallic bonding as the electrostatic attraction between the positive ions in a giant metallic lattice and a 'sea' of delocalised electrons <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">1</span> Describe metallic bonding as the electrostatic attraction between positive ions and a 'sea' of delocalised electrons <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
@@ -587,19 +543,19 @@ Metal lattice:   +   +   +   +
 
 <div class="point-item">
     <div class="point-question">
-        <span><span class="point-number">2</span> Explain in terms of structure and bonding the properties of metals: good electrical conductivity; malleability and ductility <span class="supplement-badge">Supplement</span></span>
+        <span><span class="point-number">2</span> Explain the properties of metals: good electrical conductivity; malleability and ductility <span class="supplement-badge">Supplement</span></span>
         <span class="icon">▼</span>
     </div>
     <div class="point-answer">
         <div class="answer-content">
-            表
+            <table>
                 <tr style="background:#1E3A8A; color:white;"><th>Property</th><th>Explanation</th></tr>
-                <tr><td>Good electrical conductivity</td><td>Delocalised electrons are free to move and carry charge through the structure</td></tr>
+                <tr><td>Good electrical conductivity</td><td>Delocalised electrons are free to move and carry charge</td></tr>
                 <tr style="background:#F9FAFB;"><td>Good thermal conductivity</td><td>Delocalised electrons transfer kinetic energy quickly</td></tr>
                 <tr><td>High melting/boiling points</td><td>Strong electrostatic forces between ions and electrons require lots of energy to overcome</td></tr>
                 <tr style="background:#F9FAFB;"><td>Malleable (can be hammered into shape)</td><td>Layers of positive ions can slide over each other without breaking the metallic bond</td></tr>
                 <tr><td>Ductile (can be drawn into wires)</td><td>Same reason as malleability - layers can slide</td></tr>
-            表
+            </table>
         </div>
     </div>
 </div>
@@ -614,19 +570,7 @@ Metal lattice:   +   +   +   +
 </div>
 """
 
-# Add to database
 topic = Topic.objects.get(code='2')
-note, created = TopicNote.objects.update_or_create(
-    topic=topic,
-    defaults={'content': content}
-)
+note, created = TopicNote.objects.update_or_create(topic=topic, defaults={'content': content})
 print(f"✅ Added revision notes for {topic.name}")
-print(f"📝 Content includes:")
-print("   - 2.1 Elements, compounds and mixtures (1 point)")
-print("   - 2.2 Atomic structure and Periodic Table (6 points)")
-print("   - 2.3 Isotopes (4 points)")
-print("   - 2.4 Ions and ionic bonds (6 points)")
-print("   - 2.5 Simple molecules and covalent bonds (5 points)")
-print("   - 2.6 Giant covalent structures (2 points)")
-print("   - 2.7 Metallic bonding (2 points)")
-print("\n🔗 View at: https://chempassion.info/revision-notes/")
+print("🔗 View at: https://chempassion.info/revision-notes/")
