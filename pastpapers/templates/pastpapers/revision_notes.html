@@ -17,12 +17,12 @@
                 <div class="topic-header" onclick="toggleTopic({{ topic.id }})">
                     <span class="topic-number">{{ topic.code }}.</span>
                     <span class="topic-title">{{ topic.name }}</span>
-                    <span class="topic-count">{{ topic.subtopics.count }}</span>
+                    <span class="topic-count">{{ topic.subtopics.count }} Topics</span>
                     <span class="topic-arrow">▼</span>
                 </div>
                 <div class="topic-sublist" id="topic-sublist-{{ topic.id }}">
                     {% for subtopic in topic.subtopics.all %}
-                    <a href="#" class="subtopic-link" data-subtopic-id="{{ subtopic.id }}" data-topic-id="{{ topic.id }}" onclick="loadSubtopic({{ subtopic.id }}, '{{ subtopic.name|escapejs }}', {{ topic.id }}); return false;">
+                    <a href="#" class="subtopic-link" data-subtopic-id="{{ subtopic.id }}" data-subtopic-name="{{ subtopic.name }}" onclick="loadSubtopic({{ subtopic.id }}, '{{ subtopic.name|escapejs }}'); return false;">
                         <span class="subtopic-number">{{ topic.code }}.{{ forloop.counter }}</span>
                         <span class="subtopic-title">{{ subtopic.name }}</span>
                         <span class="subtopic-badge">📄</span>
@@ -71,7 +71,7 @@
 
 <style>
     .sidebar-middle {
-        width: 320px;
+        width: 350px;
         flex-shrink: 0;
         margin-left: 1rem;
     }
@@ -195,6 +195,12 @@
         border-left: 3px solid #F59E0B;
     }
     
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #6B7280;
+    }
+    
     @media (max-width: 1024px) {
         .sidebar-middle {
             display: none;
@@ -204,54 +210,23 @@
 
 <script>
     let currentSubtopicId = null;
-    let currentStatements = {};
     
-    // Data structure for all subtopic content
-    const subtopicContent = {
-        {% for topic in topics %}
-            {% for subtopic in topic.subtopics.all %}
-                "{{ subtopic.id }}": {
-                    "title": "{{ subtopic.name }}",
-                    "topicId": {{ topic.id }},
-                    "topicName": "{{ topic.name }}",
-                    "content": ``
-                },
-            {% endfor %}
-        {% endfor %}
-    };
-    
-    // Syllabus statements data
-    const syllabusStatements = {
-        {% for topic in topics %}
-            {% for subtopic in topic.subtopics.all %}
-                "{{ subtopic.id }}": [
-                    {% with note=notes|get_item:topic.id %}
-                        {% if note %}
-                            // Extract statements from content - will be populated dynamically
-                        {% endif %}
-                    {% endwith %}
-                ],
-            {% endfor %}
-        {% endfor %}
-    };
-    
-    function loadSubtopic(subtopicId, subtopicName, topicId) {
+    function loadSubtopic(subtopicId, subtopicName) {
         currentSubtopicId = subtopicId;
         
-        // Update Column 2 - Statements Panel Title
+        // Show loading state
+        document.getElementById('statementsList').innerHTML = '<div class="loading">Loading statements...</div>';
+        document.getElementById('contentBody').innerHTML = '<div class="loading">Loading content...</div>';
+        
+        // Update titles
         document.getElementById('statementsTitle').innerHTML = subtopicName;
-        
-        // Update Column 3 - Content Area Header
         document.getElementById('contentTitle').innerHTML = subtopicName;
-        document.getElementById('contentSubtitle').innerHTML = 'Click on any statement below to reveal detailed notes';
+        document.getElementById('contentSubtitle').innerHTML = 'Click on any statement to reveal detailed notes';
         
-        // Fetch content from server via AJAX
+        // Fetch content from API
         fetch(`/api/subtopic-content/${subtopicId}/`)
             .then(response => response.json())
             .then(data => {
-                // Store statements
-                currentStatements = data.statements;
-                
                 // Build statements list in Column 2
                 buildStatementsList(data.statements);
                 
@@ -266,7 +241,8 @@
             })
             .catch(error => {
                 console.error('Error loading subtopic:', error);
-                document.getElementById('statementsList').innerHTML = '<div class="subtopic-empty">Error loading content. Please try again.</div>';
+                document.getElementById('statementsList').innerHTML = '<div class="subtopic-empty">Error loading content. Please refresh and try again.</div>';
+                document.getElementById('contentBody').innerHTML = '<div class="subtopic-empty">Error loading content. Please refresh and try again.</div>';
             });
     }
     
@@ -298,28 +274,24 @@
     
     function buildContentArea(content, statements) {
         const container = document.getElementById('contentBody');
-        if (!content) {
-            container.innerHTML = '<div class="welcome-message"><div class="feature-icon">📝</div><h3>Notes Coming Soon</h3><p>Detailed revision notes for this subtopic will be added soon.</p></div>';
-            return;
-        }
         
-        // Split content into sections based on statements
         let html = '<div class="notes-content">';
         
-        // Add each statement section with an ID for scrolling
         if (statements && statements.length > 0) {
             statements.forEach((stmt, index) => {
                 html += `
-                    <div id="content-section-${index}" class="content-section">
-                        <h3 class="section-title">${index + 1}. ${stmt.question}</h3>
-                        <div class="section-content">
+                    <div id="content-section-${index}" class="content-section" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #E5E7EB;">
+                        <h3 style="color: #1E3A8A; margin-bottom: 0.5rem;">${index + 1}. ${stmt.question}</h3>
+                        <div class="section-content" style="line-height: 1.6;">
                             ${stmt.answer}
                         </div>
                     </div>
                 `;
             });
-        } else {
+        } else if (content) {
             html += content;
+        } else {
+            html += '<div class="welcome-message"><div class="feature-icon">📝</div><h3>Notes Coming Soon</h3><p>Detailed revision notes for this subtopic will be added soon.</p></div>';
         }
         
         html += '</div>';
@@ -338,7 +310,10 @@
         document.querySelectorAll('.statement-item').forEach(item => {
             item.classList.remove('active-statement');
         });
-        document.getElementById(`statement-${index}`).classList.add('active-statement');
+        const statementItem = document.getElementById(`statement-${index}`);
+        if (statementItem) {
+            statementItem.classList.add('active-statement');
+        }
         
         // Scroll to the corresponding content section
         const contentSection = document.getElementById(`content-section-${index}`);

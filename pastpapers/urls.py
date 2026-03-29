@@ -10,7 +10,7 @@ urlpatterns = [
     path('subtopic/<int:subtopic_id>/', views.subtopic_detail, name='subtopic_detail'),
     path('subtopic/<int:subtopic_id>/practice/', views.subtopic_practice, name='subtopic_practice'),
     
-    # API endpoint for three-column layout
+    # API endpoint for three-column layout - IMPORTANT
     path('api/subtopic-content/<int:subtopic_id>/', views.get_subtopic_content, name='api_subtopic_content'),
     
     # Revision and Study
