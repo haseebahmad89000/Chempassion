@@ -1,0 +1,34 @@
+{
+  "32": {
+    "statements": [
+      {
+        "question": "State the distinguishing properties of solids, liquids and gases",
+        "answer": "<p><strong>Solids:</strong> Fixed shape and volume, cannot flow, very dense<br><strong>Liquids:</strong> Takes shape of container, fixed volume, can flow, dense<br><strong>Gases:</strong> Takes shape of container, fills container, can flow, low density</p>"
+      },
+      {
+        "question": "Describe the structures of solids, liquids and gases in terms of particle separation, arrangement and motion",
+        "answer": "<p><strong>Solids:</strong> Particles close (touching), regular pattern, vibrate in fixed positions<br><strong>Liquids:</strong> Particles close, random arrangement, move around each other<br><strong>Gases:</strong> Particles far apart, random arrangement, move quickly in all directions</p>"
+      },
+      {
+        "question": "Describe changes of state in terms of melting, boiling, evaporating, freezing and condensing",
+        "answer": "<p><strong>Melting:</strong> Solid → Liquid (heat absorbed)<br><strong>Freezing:</strong> Liquid → Solid (heat released)<br><strong>Boiling:</strong> Liquid → Gas (heat absorbed)<br><strong>Evaporation:</strong> Liquid → Gas (heat absorbed)<br><strong>Condensation:</strong> Gas → Liquid (heat released)</p>"
+      },
+      {
+        "question": "Describe the effects of temperature and pressure on the volume of a gas",
+        "answer": "<p><strong>Temperature ↑:</strong> Volume ↑ (particles gain kinetic energy, move more)<br><strong>Pressure ↑:</strong> Volume ↓ (particles forced closer together)</p>"
+      }
+    ]
+  },
+  "33": {
+    "statements": [
+      {
+        "question": "Describe and explain diffusion in terms of kinetic particle theory",
+        "answer": "<p><strong>Definition:</strong> Movement of particles from high concentration to low concentration. Particles are in constant random motion, they spread out until evenly distributed.</p><p><strong>Examples:</strong> Perfume spreading, food coloring in water</p>"
+      },
+      {
+        "question": "Describe and explain the effect of relative molecular mass on the rate of diffusion of gases",
+        "answer": "<p><strong>Rule:</strong> Lighter gases (lower Mr) diffuse faster.<br><strong>Why?</strong> At same temperature, all particles have same kinetic energy (KE=½mv²). Lighter particles move faster, so diffuse faster.</p>"
+      }
+    ]
+  }
+}
