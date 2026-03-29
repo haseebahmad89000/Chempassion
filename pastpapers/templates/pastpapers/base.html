@@ -524,7 +524,8 @@
     </header>
     
     <div class="main-layout">
-        <!-- Sidebar with Collapsible Topics -->
+        <!-- Sidebar with Collapsible Topics - Only show on revision notes page -->
+        {% if request.path == '/revision-notes/' or request.path == '/revision-notes' %}
         <aside class="sidebar">
             <div class="sidebar-card">
                 <div class="sidebar-header" onclick="toggleAllTopics()">
@@ -532,30 +533,35 @@
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="sidebar-content" id="sidebarContent">
-                    {% for topic in topics %}
-                    <div class="topic-group" id="topic-group-{{ topic.id }}">
-                        <div class="topic-header" onclick="toggleTopic({{ topic.id }})">
-                            <span class="topic-number">{{ topic.code }}.</span>
-                            <span class="topic-title">{{ topic.name }}</span>
-                            <span class="topic-count">{{ topic.subtopics.count }} Topics - {{ topic.question_count }} Notes</span>
-                            <span class="topic-arrow">▼</span>
+                    {% if topics %}
+                        {% for topic in topics %}
+                        <div class="topic-group" id="topic-group-{{ topic.id }}">
+                            <div class="topic-header" onclick="toggleTopic({{ topic.id }})">
+                                <span class="topic-number">{{ topic.code }}.</span>
+                                <span class="topic-title">{{ topic.name }}</span>
+                                <span class="topic-count">{{ topic.subtopics.count }} Topics - {{ topic.question_count }} Notes</span>
+                                <span class="topic-arrow">▼</span>
+                            </div>
+                            <div class="topic-sublist" id="topic-sublist-{{ topic.id }}">
+                                {% for subtopic in topic.subtopics.all %}
+                                <a href="{% url 'subtopic_detail' subtopic.id %}" class="subtopic-link">
+                                    <span class="subtopic-number">{{ topic.code }}.{{ forloop.counter }}</span>
+                                    <span class="subtopic-title">{{ subtopic.name }}</span>
+                                    <span class="subtopic-badge">📄</span>
+                                </a>
+                                {% empty %}
+                                <div class="subtopic-empty">Coming soon</div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div class="topic-sublist" id="topic-sublist-{{ topic.id }}">
-                            {% for subtopic in topic.subtopics.all %}
-                            <a href="{% url 'subtopic_detail' subtopic.id %}" class="subtopic-link">
-                                <span class="subtopic-number">{{ topic.code }}.{{ forloop.counter }}</span>
-                                <span class="subtopic-title">{{ subtopic.name }}</span>
-                                <span class="subtopic-badge">📄</span>
-                            </a>
-                            {% empty %}
-                            <div class="subtopic-empty">Coming soon</div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                        <div class="subtopic-empty">Loading topics...</div>
+                    {% endif %}
                 </div>
             </div>
         </aside>
+        {% endif %}
         
         <main class="content">
             {% block content %}{% endblock %}
