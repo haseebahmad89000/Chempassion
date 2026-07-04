@@ -19,6 +19,7 @@ urlpatterns = [
     path('exam-questions/', views.exam_questions, name='exam_questions'),
     path('past-papers/', views.past_papers, name='past_papers'),
     path('mock-exams/', views.mock_exams, name='mock_exams'),
+    path('pricing/', views.pricing, name='pricing'),
     path('target-test/', views.target_test, name='target_test'),
     path('strengths-weaknesses/', views.strengths_weaknesses, name='strengths_weaknesses'),
     path('live-classes/', views.live_classes, name='live_classes'),
