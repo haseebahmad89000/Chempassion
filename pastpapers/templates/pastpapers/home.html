@@ -7,234 +7,352 @@
 
 {% block content %}
 <style>
-    /* Hero Section */
+    /* Hero Section — glass + animated gradient text + floating icons */
     .hero {
-        background: linear-gradient(135deg, #1E3A8A 0%, #10B981 100%);
-        border-radius: 24px;
-        padding: 2rem;
+        background: rgba(255,255,255,0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255,255,255,0.6);
+        border-radius: 28px;
+        padding: 3rem 2.5rem;
         margin-bottom: 2rem;
-        color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 1.5rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        gap: 2rem;
+        box-shadow: 0 8px 32px rgba(38,91,246,0.08);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(38,91,246,0.14), transparent 70%);
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        left: 30%;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(16,185,129,0.12), transparent 70%);
+    }
+
+    .float-icon {
+        position: absolute;
+        font-size: 1.8rem;
+        opacity: 0.55;
+        animation: bob 5s ease-in-out infinite;
+        pointer-events: none;
+    }
+    .float-icon.i1 { top: 12%; right: 8%; animation-delay: 0s; }
+    .float-icon.i2 { top: 55%; right: 20%; font-size: 1.3rem; animation-delay: -1.6s; }
+    .float-icon.i3 { top: 75%; right: 4%; font-size: 1.5rem; animation-delay: -3s; }
+    @keyframes bob {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-14px) rotate(8deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .float-icon { animation: none; }
     }
     
     .hero-left {
         flex: 2;
+        position: relative;
+        z-index: 1;
     }
     
     .hero-badge {
         display: inline-block;
-        background: rgba(255,255,255,0.2);
-        padding: 0.3rem 1rem;
+        background: #EEF2FF;
+        color: #265BF6;
+        padding: 0.35rem 1rem;
         border-radius: 30px;
-        font-size: 0.7rem;
-        margin-bottom: 0.8rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
     }
     
     .hero-left h1 {
-        font-size: 1.6rem;
-        margin-bottom: 0.3rem;
+        font-size: 2.1rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.4rem;
+        background: linear-gradient(100deg, #14204A 30%, #265BF6 55%, #10B981 75%, #14204A 100%);
+        background-size: 250% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shine 7s linear infinite;
+    }
+    @keyframes shine {
+        to { background-position: 250% center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .hero-left h1 { animation: none; }
     }
     
     .hero-left .exam-code {
-        font-size: 0.8rem;
-        opacity: 0.9;
-        margin-bottom: 0.8rem;
+        font-size: 0.82rem;
+        color: #6B7280;
+        font-weight: 600;
+        margin-bottom: 1rem;
     }
     
     .hero-left p {
-        font-size: 0.85rem;
-        opacity: 0.95;
-        max-width: 450px;
+        font-size: 0.95rem;
+        color: #4B5563;
+        max-width: 460px;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
     }
     
     .hero-stats {
         display: flex;
-        gap: 1.5rem;
-        margin-top: 1rem;
+        gap: 1rem;
+        margin-top: 0.5rem;
     }
     
     .hero-stat {
         text-align: center;
-        background: rgba(255,255,255,0.15);
-        padding: 0.4rem 1rem;
+        background: #F7F8FC;
+        border: 1px solid #EDEFF5;
+        padding: 0.6rem 1.2rem;
         border-radius: 16px;
     }
     
     .hero-stat .number {
-        font-size: 1.2rem;
-        font-weight: bold;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #265BF6;
     }
     
     .hero-stat .label {
-        font-size: 0.6rem;
+        font-size: 0.65rem;
+        color: #6B7280;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
     }
     
     .hero-right {
         flex: 1;
         text-align: right;
+        position: relative;
+        z-index: 1;
     }
     
     .hero-buttons {
         display: flex;
-        gap: 1rem;
+        gap: 0.8rem;
         justify-content: flex-end;
     }
     
     .btn-primary {
-        background: #F59E0B;
+        background: #265BF6;
         color: white;
-        padding: 0.6rem 1.2rem;
+        padding: 0.75rem 1.4rem;
         border-radius: 40px;
         text-decoration: none;
-        font-size: 0.8rem;
-        font-weight: 600;
+        font-size: 0.85rem;
+        font-weight: 700;
         transition: all 0.2s;
         display: inline-block;
+        box-shadow: 0 4px 14px rgba(38,91,246,0.3);
     }
     
     .btn-primary:hover {
-        background: #D97706;
-        transform: translateY(-2px);
+        background: #1a46d1;
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 8px 22px rgba(38,91,246,0.4);
     }
     
     .btn-secondary {
-        background: rgba(255,255,255,0.2);
-        color: white;
-        padding: 0.6rem 1.2rem;
+        background: white;
+        color: #265BF6;
+        border: 1.5px solid #DCE3FA;
+        padding: 0.75rem 1.4rem;
         border-radius: 40px;
         text-decoration: none;
-        font-size: 0.8rem;
-        font-weight: 600;
+        font-size: 0.85rem;
+        font-weight: 700;
         transition: all 0.2s;
         display: inline-block;
     }
     
     .btn-secondary:hover {
-        background: rgba(255,255,255,0.3);
+        background: #F0F3FF;
+        transform: translateY(-3px) scale(1.03);
     }
     
-    /* Features Grid */
+    /* Bento Grid Layout */
     .features-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(150px, auto);
         gap: 1.2rem;
         margin-bottom: 2rem;
+    }
+
+    .features-grid .feature-card:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .features-grid .feature-card:nth-child(1) .feature-icon {
+        width: 68px; height: 68px; font-size: 2.1rem;
+    }
+    .features-grid .feature-card:nth-child(1) h3 { font-size: 1.25rem; }
+    .features-grid .feature-card:nth-child(1) p { font-size: 0.82rem; }
+
+    .features-grid .feature-card:nth-child(5) {
+        grid-column: span 2;
+        background: linear-gradient(135deg, #EEF2FF, #ECFDF5);
     }
     
     .feature-card {
         background: white;
         border-radius: 20px;
-        padding: 1.2rem;
+        padding: 1.5rem 1.2rem;
         text-align: center;
-        transition: all 0.2s;
-        border: 1px solid #E5E7EB;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+        border: 1px solid #EDEFF5;
+        box-shadow: 0 1px 2px rgba(15,23,42,0.03);
     }
     
     .feature-card:hover {
-        transform: translateY(-3px);
-        border-color: #7C3AED;
-        box-shadow: 0 8px 20px rgba(124,58,237,0.1);
+        transform: translateY(-6px) rotate(-0.5deg);
+        border-color: #265BF6;
+        box-shadow: 0 16px 32px rgba(38,91,246,0.14);
     }
+
+    .feature-card:nth-child(1) { transition-delay: 0.02s; }
+    .feature-card:nth-child(2) { transition-delay: 0.06s; }
+    .feature-card:nth-child(3) { transition-delay: 0.10s; }
+    .feature-card:nth-child(4) { transition-delay: 0.14s; }
+    .feature-card:nth-child(5) { transition-delay: 0.18s; }
     
     .feature-icon {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.7rem;
+        margin-bottom: 0.7rem;
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        background: #EEF2FF;
+        border-radius: 14px;
     }
     
     .feature-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 0.2rem;
-        color: #1E3A8A;
+        font-size: 0.98rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        color: #14204A;
     }
     
     .feature-card p {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
         color: #6B7280;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
     }
     
     .feature-link {
-        color: #10B981;
+        color: #265BF6;
         text-decoration: none;
-        font-size: 0.7rem;
-        font-weight: 600;
+        font-size: 0.72rem;
+        font-weight: 700;
     }
     
     .feature-link:hover {
-        color: #059669;
+        color: #10B981;
     }
     
     /* Specialities Section */
     .specialities-section {
-        background: #F9FAFB;
-        border-radius: 24px;
-        padding: 1.5rem;
+        background: white;
+        border-radius: 28px;
+        padding: 2.5rem 2rem;
         margin-bottom: 2rem;
-        border: 1px solid #E5E7EB;
+        border: 1px solid #EDEFF5;
     }
     
     .specialities-header {
         text-align: center;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.8rem;
     }
     
     .specialities-header h2 {
-        font-size: 1.2rem;
-        color: #1E3A8A;
-        margin-bottom: 0.2rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #14204A;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.4rem;
     }
     
     .specialities-header p {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         color: #6B7280;
     }
     
     .specialities-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 0.8rem;
+        gap: 0.9rem;
         text-align: center;
     }
     
     .speciality-item {
-        background: white;
-        padding: 0.7rem 0.3rem;
-        border-radius: 12px;
+        background: #F7F8FC;
+        padding: 1rem 0.5rem;
+        border-radius: 14px;
         transition: all 0.2s;
-        border: 1px solid #E5E7EB;
+        border: 1px solid transparent;
     }
     
     .speciality-item:hover {
-        border-color: #7C3AED;
-        transform: translateY(-2px);
+        border-color: #265BF6;
+        background: white;
+        transform: translateY(-3px);
     }
     
     .speciality-icon {
-        font-size: 1.3rem;
-        margin-bottom: 0.2rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.4rem;
     }
     
     .speciality-title {
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: #10B981;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #14204A;
     }
     
     .speciality-desc {
-        font-size: 0.55rem;
+        font-size: 0.62rem;
         color: #6B7280;
+        margin-top: 0.1rem;
     }
     
     @media (max-width: 768px) {
         .hero {
             flex-direction: column;
             text-align: center;
+            padding: 2rem 1.5rem;
         }
         .hero-right {
             text-align: center;
@@ -255,6 +373,9 @@
 </style>
 
 <div class="hero">
+    <span class="float-icon i1">⚛️</span>
+    <span class="float-icon i2">🧪</span>
+    <span class="float-icon i3">🔬</span>
     <div class="hero-left">
         <div class="hero-badge">✨ Cambridge IGCSE ✨</div>
         <h1>IGCSE Chemistry 0620</h1>
@@ -283,92 +404,92 @@
     </div>
 </div>
 
-<div class="features-grid">
+<div class="features-grid reveal">
     <div class="feature-card">
-        <div class="feature-icon">📝</div>
+        <div class="feature-icon" aria-hidden="true">📝</div>
         <h3>Revision Notes</h3>
         <p>Concise notes covering all 11 topics</p>
         <a href="{% url 'revision_notes' %}" class="feature-link">Browse →</a>
     </div>
     <div class="feature-card">
-        <div class="feature-icon">📋</div>
+        <div class="feature-icon" aria-hidden="true">📋</div>
         <h3>Exam Questions</h3>
         <p>Past paper questions with mark schemes</p>
         <a href="{% url 'exam_questions' %}" class="feature-link">Practice →</a>
     </div>
     <div class="feature-card">
-        <div class="feature-icon">📄</div>
+        <div class="feature-icon" aria-hidden="true">📄</div>
         <h3>Past Papers</h3>
         <p>Full papers with detailed solutions</p>
         <a href="{% url 'past_papers' %}" class="feature-link">Download →</a>
     </div>
     <div class="feature-card">
-        <div class="feature-icon">🎬</div>
+        <div class="feature-icon" aria-hidden="true">🎬</div>
         <h3>Live Classes</h3>
         <p>Weekly revision sessions with experts</p>
         <a href="{% url 'live_classes' %}" class="feature-link">Join Live →</a>
     </div>
     <div class="feature-card">
-        <div class="feature-icon">🎓</div>
+        <div class="feature-icon" aria-hidden="true">🎓</div>
         <h3>Full Courses</h3>
         <p>Structured video course + 1-on-1 tutoring</p>
         <a href="{% url 'pricing' %}" class="feature-link">View Plans →</a>
     </div>
 </div>
 
-<div class="specialities-section">
+<div class="specialities-section reveal">
     <div class="specialities-header">
         <h2>✨ Why Students Choose ChemPassion</h2>
         <p>Everything you need to ace your IGCSE Chemistry exams</p>
     </div>
     <div class="specialities-grid">
         <div class="speciality-item">
-            <div class="speciality-icon">📚</div>
+            <div class="speciality-icon" aria-hidden="true">📚</div>
             <div class="speciality-title">Syllabus Aligned</div>
             <div class="speciality-desc">Cambridge 0620 & 0971</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">👩‍🏫</div>
+            <div class="speciality-icon" aria-hidden="true">👩‍🏫</div>
             <div class="speciality-title">Expert-Crafted</div>
             <div class="speciality-desc">By experienced teachers</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">📥</div>
+            <div class="speciality-icon" aria-hidden="true">📥</div>
             <div class="speciality-title">Free Downloads</div>
             <div class="speciality-desc">Notes & past papers PDF</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">🎯</div>
+            <div class="speciality-icon" aria-hidden="true">🎯</div>
             <div class="speciality-title">Topic-by-Topic</div>
             <div class="speciality-desc">Organized practice</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">💡</div>
+            <div class="speciality-icon" aria-hidden="true">💡</div>
             <div class="speciality-title">Examiner Tips</div>
             <div class="speciality-desc">Avoid common mistakes</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">🧪</div>
+            <div class="speciality-icon" aria-hidden="true">🧪</div>
             <div class="speciality-title">Practical Skills</div>
             <div class="speciality-desc">Lab techniques & experiments</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">📊</div>
+            <div class="speciality-icon" aria-hidden="true">📊</div>
             <div class="speciality-title">Progress Tracking</div>
             <div class="speciality-desc">Monitor your improvement</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">🎓</div>
+            <div class="speciality-icon" aria-hidden="true">🎓</div>
             <div class="speciality-title">Past Paper Analysis</div>
             <div class="speciality-desc">Common question patterns</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">⚡</div>
+            <div class="speciality-icon" aria-hidden="true">⚡</div>
             <div class="speciality-title">Quick Revision</div>
             <div class="speciality-desc">Last-minute summaries</div>
         </div>
         <div class="speciality-item">
-            <div class="speciality-icon">🌍</div>
+            <div class="speciality-icon" aria-hidden="true">🌍</div>
             <div class="speciality-title">Growing Community</div>
             <div class="speciality-desc">Join students worldwide</div>
         </div>
