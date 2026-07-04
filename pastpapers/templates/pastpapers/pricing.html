@@ -1,1 +1,165 @@
+{% extends 'pastpapers/base.html' %}
 
+{% block title %}Courses & Pricing{% endblock %}
+
+{% block content %}
+<style>
+    .pricing-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .pricing-header h1 {
+        font-size: 1.6rem;
+        color: #1E3A8A;
+        margin-bottom: 0.4rem;
+    }
+    .pricing-header p {
+        font-size: 0.85rem;
+        color: #6B7280;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    .price-card {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        border: 1px solid #E5E7EB;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .price-card.featured {
+        border: 2px solid #F59E0B;
+        box-shadow: 0 8px 20px rgba(245,158,11,0.15);
+        position: relative;
+    }
+    .price-card.featured::before {
+        content: "MOST POPULAR";
+        position: absolute;
+        top: -11px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #F59E0B;
+        color: white;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 0.25rem 0.7rem;
+        border-radius: 20px;
+    }
+    .price-card .tier-icon {
+        font-size: 1.6rem;
+    }
+    .price-card h3 {
+        color: #1E3A8A;
+        font-size: 1.15rem;
+    }
+    .price-card .price {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #10B981;
+    }
+    .price-card .price span {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #6B7280;
+    }
+    .price-card ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: #374151;
+    }
+    .price-card ul li::before {
+        content: "✓ ";
+        color: #10B981;
+        font-weight: 700;
+    }
+    .price-card .btn-primary, .price-card .btn-outline {
+        margin-top: auto;
+        text-align: center;
+        padding: 0.6rem 1rem;
+        border-radius: 40px;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    .price-card .btn-primary {
+        background: #F59E0B;
+        color: white;
+    }
+    .price-card .btn-primary:hover { background: #D97706; }
+    .price-card .btn-outline {
+        border: 1px solid #10B981;
+        color: #10B981;
+    }
+    .price-card .btn-outline:hover { background: #ECFDF5; }
+    .pricing-note {
+        text-align: center;
+        font-size: 0.75rem;
+        color: #6B7280;
+        margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+        .pricing-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<div class="pricing-header">
+    <h1>🎓 Courses & Pricing</h1>
+    <p>Free resources get you started. These plans take you further — structured lessons, live support, and 1-on-1 help when you need it.</p>
+</div>
+
+<div class="pricing-grid">
+    <div class="price-card">
+        <div class="tier-icon">📼</div>
+        <h3>Basic</h3>
+        <div class="price">PKR 3,000<span> / one-time</span></div>
+        <ul>
+            <li>Full recorded video course</li>
+            <li>All syllabus topics covered</li>
+            <li>Worksheets & quizzes included</li>
+            <li>Lifetime access</li>
+        </ul>
+        <a href="mailto:haseebahmad89000@gmail.com?subject=ChemPassion Basic Enrollment" class="btn-outline">Get Started</a>
+    </div>
+
+    <div class="price-card featured">
+        <div class="tier-icon">🎥</div>
+        <h3>Standard</h3>
+        <div class="price">PKR 1,500<span> / month</span></div>
+        <ul>
+            <li>Everything in Basic</li>
+            <li>Weekly live doubt-clearing session</li>
+            <li>Direct access to ask questions</li>
+            <li>Priority feedback on practice</li>
+        </ul>
+        <a href="mailto:haseebahmad89000@gmail.com?subject=ChemPassion Standard Enrollment" class="btn-primary">Enroll Now</a>
+    </div>
+
+    <div class="price-card">
+        <div class="tier-icon">👨‍🏫</div>
+        <h3>Premium</h3>
+        <div class="price">PKR 2,500<span> / session</span></div>
+        <ul>
+            <li>Everything in Standard</li>
+            <li>1-on-1 tutoring, your schedule</li>
+            <li>Personalized exam strategy</li>
+            <li>Targeted weak-area coaching</li>
+        </ul>
+        <a href="mailto:haseebahmad89000@gmail.com?subject=ChemPassion Premium Enrollment" class="btn-outline">Book a Session</a>
+    </div>
+</div>
+
+<p class="pricing-note">Payments currently handled directly — email to enroll and we'll confirm details with you.</p>
+{% endblock %}
