@@ -147,6 +147,9 @@ def past_papers(request):
 def mock_exams(request):
     return render(request, 'pastpapers/mock_exams.html')
 
+def pricing(request):
+    return render(request, 'pastpapers/pricing.html')
+
 def target_test(request):
     return render(request, 'pastpapers/target_test.html')
 
